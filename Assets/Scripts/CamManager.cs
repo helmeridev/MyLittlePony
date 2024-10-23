@@ -9,10 +9,12 @@ public class CamManager : MonoBehaviour
 
 
     void FixedUpdate() {
-        Vector3 targetPos = new Vector3(player.transform.position.x, transform.position.y, -10);
-        transform.position = Vector3.Lerp(transform.position, targetPos, parallaxIntensity * Time.deltaTime);
+        if(!UIManager.isPaused) {
+            Vector3 targetPos = new Vector3(player.transform.position.x, transform.position.y, -10);
+            transform.position = Vector3.Lerp(transform.position, targetPos, parallaxIntensity * Time.deltaTime);
 
-        CamVertical();
+            CamVertical();
+        }
     }
 
     void CamVertical() {

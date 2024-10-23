@@ -20,7 +20,12 @@ public class Movement : MonoBehaviour
     [SerializeField] private LayerMask jumpLayer;
     [SerializeField] private float maxFeetDist;
     void Update() {
-        if(canMove) {
+        if(canMove && !UIManager.isPaused) {
+            if(rb.constraints != RigidbodyConstraints2D.FreezeRotation) {
+                rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+                rb.velocity = new Vector2(rb.velocity.x, 0.001f);
+            }
+
             horizontal = Input.GetAxis("Horizontal");
 
             if(Input.GetButton("Jump") && IsGrounded()) {
@@ -30,17 +35,17 @@ public class Movement : MonoBehaviour
                 rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
             }
         }
-        else {
-            rb.velocity = Vector3.zero;
+        else if(!canMove || UIManager.isPaused) {
+            if(rb.constraints != RigidbodyConstraints2D.FreezeAll) {
+                rb.velocity = Vector3.zero;
+                rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            }
         }
     }
 
     void FixedUpdate() {
         if(canMove) {
             rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
-        }
-        else {
-            rb.velocity = Vector3.zero;
         }
     }
 

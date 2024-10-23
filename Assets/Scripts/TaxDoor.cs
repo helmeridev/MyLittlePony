@@ -10,8 +10,8 @@ public class TaxDoor : MonoBehaviour
 
     [Header("Dialogue")]
     public List<string> dialogue = new List<string>();
-    private int diaNumber = 0;
-    private bool didCollect;
+    public int diaNumber = 0;
+    public bool didCollect;
 
     public void GUI(GameObject guiObject, TMP_Text text, TaxManager tax) {
         if(Input.GetKeyDown(KeyCode.E)) OpenGUI(guiObject);

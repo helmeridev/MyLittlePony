@@ -14,11 +14,16 @@ public class TaxManager : MonoBehaviour
     [SerializeField] TMP_Text moneyText;
 
     void Update() {
-        if(taxDoor) {
-            taxDoor.GUI(dialogueUI, dialogueText, this);
-        }
+        if(!UIManager.isPaused) {
+            if(taxDoor) {
+                taxDoor.GUI(dialogueUI, dialogueText, this);
+            }
 
-        moneyText.text = money.ToString();
+            moneyText.text = money.ToString();
+        }
+        else {
+            Debug.Log("Paused");
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other) {
