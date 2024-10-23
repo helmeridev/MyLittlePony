@@ -16,7 +16,7 @@ public class TaxDoor : MonoBehaviour
     public void GUI(GameObject guiObject, TMP_Text text, TaxManager tax) {
         if(Input.GetKeyDown(KeyCode.E)) OpenGUI(guiObject);
         if(Input.GetKeyDown(KeyCode.Escape)) CloseGUI(guiObject);
-        if(Input.GetKeyDown(KeyCode.Return)) diaNumber += 1;
+        if(GUI_NextInput()) diaNumber += 1;
         
         if(diaNumber > dialogue.Count - 1) {
             CloseGUI(guiObject);
@@ -26,7 +26,7 @@ public class TaxDoor : MonoBehaviour
 
         if(didCollect) {
             text.text = "You already took my money.";
-            if(Input.GetKeyDown(KeyCode.Return)) diaNumber = dialogue.Count;
+            if(GUI_NextInput()) diaNumber = dialogue.Count;
         }
         else {
             text.text = dialogue[diaNumber];
@@ -45,5 +45,14 @@ public class TaxDoor : MonoBehaviour
 
     void Start() {
         cash = Mathf.Round(Random.Range(cashRange.x, cashRange.y + 1) * 10) * 0.1f;
+    }
+
+    bool GUI_NextInput() {
+        if( Input.GetKeyDown(KeyCode.Return) ||
+            Input.GetKeyDown(KeyCode.Space) || 
+            Input.GetMouseButtonDown(0)) {
+            return true;
+        }
+        else return false;
     }
 }

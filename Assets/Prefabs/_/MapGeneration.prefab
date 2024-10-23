@@ -50,7 +50,7 @@ MonoBehaviour:
   groundChunks:
   - {fileID: 3069689423574387755, guid: 0b7294d6fc9d69e4e8391d161e060087, type: 3}
   housePrefab:
-  - {fileID: 3585367522822822474, guid: 6690692e95fa1314187b6b60ffd0f406, type: 3}
+  - {fileID: 6072569823831455686, guid: bd0b2cabc94dd0648bcbf034575d6ade, type: 3}
   groundChunkStartPos: {fileID: 2631916696803417141}
   nextChunkPos: {fileID: 0}
 --- !u!1 &7233454679515901741
