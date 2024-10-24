@@ -20,10 +20,10 @@ public class TaxManager : MonoBehaviour
                 taxDoor.GUI(dialogueUI, dialogueText, this);
             }
             if(gambling) {
-                gambling.WheelSpin(this);
+                gambling.GUI(this);
             }
 
-            moneyText.text = money.ToString();
+            moneyText.text = money.ToString("0.00");
         }
         else {
             Debug.Log("Paused");

@@ -16,7 +16,7 @@ public class TaxDoor : MonoBehaviour
     public void GUI(GameObject guiObject, TMP_Text text, TaxManager tax) {
         if(Input.GetKeyDown(KeyCode.E)) OpenGUI(guiObject);
         if(Input.GetKeyDown(KeyCode.Escape)) CloseGUI(guiObject);
-        if(GUI_NextInput()) diaNumber += 1;
+        if(GUI_NextInput() && guiObject.activeSelf) diaNumber += 1;
         
         if(diaNumber > dialogue.Count - 1) {
             CloseGUI(guiObject);

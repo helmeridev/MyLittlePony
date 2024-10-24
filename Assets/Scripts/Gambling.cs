@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Gambling : MonoBehaviour
 {
     TaxManager tax;
 
     [SerializeField] Rigidbody2D wheel;
+    [SerializeField] GameObject gambleUI;
+    [SerializeField] TMP_InputField moneyInputField;
+
+    [Header("Properties")]
     [SerializeField] Vector2 spinSpeed;
     [SerializeField] float stopVelocityLimit;
-    public float wheelAngle;
-    public int winMultiplier;
-    private bool startedSpin;
 
     [System.Serializable]
     public struct Prize {
@@ -21,6 +24,12 @@ public class Gambling : MonoBehaviour
         public float endAngle;
     }
     public Prize[] prizes;
+
+    [Header("Info")]
+    public float wheelAngle;
+    public int winMultiplier;
+    public float moneyInput;
+    private bool startedSpin;
 
     public enum WheelMode {
         idle, 
@@ -38,23 +47,52 @@ public class Gambling : MonoBehaviour
         }
     }
 
-    public void WheelSpin(TaxManager newTax) {
-        tax = newTax;
+    //Gamble UI
+    public void GUI(TaxManager newTax) {
+        if(wheelMode == WheelMode.idle) {
+            tax = newTax;
 
-        if(Input.GetKeyDown(KeyCode.E) && wheelMode == WheelMode.idle) {
-            if(tax.money >= 5) {
-                tax.money -= 5;
-                wheelMode = WheelMode.spinning;
+            if(Input.GetKeyDown(KeyCode.E)) OpenGUI(gambleUI);
+            if(Input.GetKeyDown(KeyCode.Escape)) CloseGUI(gambleUI);
+        }
+    }
+    void OpenGUI(GameObject guiObject) {
+        Movement.canMove = false;
+        guiObject.SetActive(true);
+    }
+    void CloseGUI(GameObject guiObject) {
+        Movement.canMove = true;
+        guiObject.SetActive(false);
+    }
+
+    public void GrabInputField() {
+        if(wheelMode == WheelMode.idle) {
+            string input = moneyInputField.text;
+
+            if(float.TryParse(input, out float newInput)) {
+                moneyInput = newInput;
+            }
+            else {
+                Debug.LogError("Invalid input, please enter a number");
             }
         }
+    }
 
-        if(wheelMode == WheelMode.spinning && startedSpin == false) {
+    //Method for wheel spin
+    public void WheelSpin() {
+        if(tax.money >= moneyInput && moneyInput > 0 && wheelMode == WheelMode.idle && startedSpin == false) {          
             Debug.Log("Started spin");
+
+            CloseGUI(gambleUI);
+
+            tax.money -= moneyInput;
+            wheelMode = WheelMode.spinning;
             wheel.AddTorque(Random.Range(spinSpeed.x, spinSpeed.y), ForceMode2D.Impulse);
             startedSpin = true;
         }
     }
 
+    //Wheel logic, which prize was hit and how much reward etc
     void WheelLogic() {
         foreach(Prize prize in prizes) {
             if(wheelMode == WheelMode.spinning) {
@@ -66,7 +104,7 @@ public class Gambling : MonoBehaviour
             else if(wheelMode == WheelMode.reward) {
                 if(DidHit(wheelAngle, prize.startAngle, prize.endAngle)) {
                     winMultiplier = prize._winMultiplier;
-                    tax.money += 5 * winMultiplier;
+                    tax.money += moneyInput * winMultiplier;
                     Debug.Log("Hit");
                     startedSpin = false;
                     wheelMode = WheelMode.idle;
@@ -75,6 +113,7 @@ public class Gambling : MonoBehaviour
         }
     }
 
+    //Check if the wheel hit a specific area between angles
     bool DidHit(float angle, float newStartAngle, float newEndAngle) {
         angle = NormalizeAngle(angle);
         newStartAngle = NormalizeAngle(newStartAngle);
@@ -86,6 +125,7 @@ public class Gambling : MonoBehaviour
         else return false;
     }
 
+    //Normalize the wheel rotation angle float
     float NormalizeAngle(float angle) {
         if(angle == 360f) {
             return 360f;
