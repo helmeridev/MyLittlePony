@@ -278,12 +278,12 @@ MonoBehaviour:
   - {x: 0.5, y: 0.5, z: 0}
   - {x: 0.5, y: -0.5, z: 0}
   m_ShapePathHash: 0
-  m_Mesh: {fileID: 142765950}
-  m_InstanceId: 29100
+  m_Mesh: {fileID: 158616558}
+  m_InstanceId: 45446
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.5, z: 0}
---- !u!43 &142765950
+--- !u!43 &158616558
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1962,10 +1962,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gambling UI
       objectReference: {fileID: 0}
-    - target: {fileID: 3718352614277314074, guid: 26d1885bc7e73f742885bdb863aed11d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4743908803371716227, guid: 26d1885bc7e73f742885bdb863aed11d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1992,11 +1988,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4743908803371716227, guid: 26d1885bc7e73f742885bdb863aed11d, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 4743908803371716227, guid: 26d1885bc7e73f742885bdb863aed11d, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 449.96
       objectReference: {fileID: 0}
     - target: {fileID: 4743908803371716227, guid: 26d1885bc7e73f742885bdb863aed11d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2032,7 +2028,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4743908803371716227, guid: 26d1885bc7e73f742885bdb863aed11d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -0.021346
       objectReference: {fileID: 0}
     - target: {fileID: 4743908803371716227, guid: 26d1885bc7e73f742885bdb863aed11d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
