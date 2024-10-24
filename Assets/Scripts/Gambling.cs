@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class Gambling : MonoBehaviour
 {
+    TaxManager tax;
+
     [SerializeField] Rigidbody2D wheel;
-    [SerializeField] float spinSpeed = 5;
+    [SerializeField] Vector2 spinSpeed;
     [SerializeField] float stopVelocityLimit;
     public float wheelAngle;
     public int winMultiplier;
-    private int wheelLogicLoopNumber;
     private bool startedSpin;
-    public string debug;
 
     [System.Serializable]
     public struct Prize {
@@ -31,20 +31,26 @@ public class Gambling : MonoBehaviour
 
 
     void Update() {
-        wheelAngle = wheel.transform.eulerAngles.z;
+        if(!UIManager.isPaused) {
+            wheelAngle = wheel.transform.eulerAngles.z;
 
-        WheelLogic();
-        WheelSpin();
+            WheelLogic();
+        }
     }
 
-    public void WheelSpin() {
-        if(Input.GetKeyDown(KeyCode.G) && wheelMode == WheelMode.idle) {
-            wheelMode = WheelMode.spinning;
+    public void WheelSpin(TaxManager newTax) {
+        tax = newTax;
+
+        if(Input.GetKeyDown(KeyCode.E) && wheelMode == WheelMode.idle) {
+            if(tax.money >= 5) {
+                tax.money -= 5;
+                wheelMode = WheelMode.spinning;
+            }
         }
 
         if(wheelMode == WheelMode.spinning && startedSpin == false) {
             Debug.Log("Started spin");
-            wheel.AddTorque(spinSpeed, ForceMode2D.Impulse);
+            wheel.AddTorque(Random.Range(spinSpeed.x, spinSpeed.y), ForceMode2D.Impulse);
             startedSpin = true;
         }
     }
@@ -58,15 +64,13 @@ public class Gambling : MonoBehaviour
                 }
             }
             else if(wheelMode == WheelMode.reward) {
-                debug = NormalizeAngle(wheelAngle) + " " + NormalizeAngle(prize.startAngle) + " " + NormalizeAngle(prize.endAngle);
                 if(DidHit(wheelAngle, prize.startAngle, prize.endAngle)) {
                     winMultiplier = prize._winMultiplier;
+                    tax.money += 5 * winMultiplier;
                     Debug.Log("Hit");
                     startedSpin = false;
                     wheelMode = WheelMode.idle;
                 }
-
-                Debug.Log(NormalizeAngle(prize.endAngle));
             }
         }
     }
@@ -83,6 +87,11 @@ public class Gambling : MonoBehaviour
     }
 
     float NormalizeAngle(float angle) {
-        return (angle + 360) % 360;
+        if(angle == 360f) {
+            return 360f;
+        }
+        else {
+            return (angle + 360) % 360;
+        }
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine;
 public class TaxManager : MonoBehaviour
 {
     TaxDoor taxDoor;
+    Gambling gambling;
     public float money;
 
     [SerializeField] GameObject dialogueUI;
@@ -18,6 +19,9 @@ public class TaxManager : MonoBehaviour
             if(taxDoor) {
                 taxDoor.GUI(dialogueUI, dialogueText, this);
             }
+            if(gambling) {
+                gambling.WheelSpin(this);
+            }
 
             moneyText.text = money.ToString();
         }
@@ -28,10 +32,14 @@ public class TaxManager : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other) {
         if(taxDoor = other.GetComponent<TaxDoor>()) {}
+        if(gambling = other.GetComponent<Gambling>()) {}
     }
     void OnTriggerExit2D(Collider2D other) {
         if(other.GetComponent<TaxDoor>()) {
             taxDoor = null;
+        }
+        if(other.GetComponent<Gambling>()) {
+            gambling = null;
         }
     }
 }
