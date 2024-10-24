@@ -12,6 +12,7 @@ public class Gambling : MonoBehaviour
     public int winMultiplier;
     private int wheelLogicLoopNumber;
     private bool startedSpin;
+    public string debug;
 
     [System.Serializable]
     public struct Prize {
@@ -57,21 +58,15 @@ public class Gambling : MonoBehaviour
                 }
             }
             else if(wheelMode == WheelMode.reward) {
-                if(wheelLogicLoopNumber < prizes.Length) {
-                    wheelLogicLoopNumber += 1;
-                }
-
+                debug = NormalizeAngle(wheelAngle) + " " + NormalizeAngle(prize.startAngle) + " " + NormalizeAngle(prize.endAngle);
                 if(DidHit(wheelAngle, prize.startAngle, prize.endAngle)) {
                     winMultiplier = prize._winMultiplier;
                     Debug.Log("Hit");
                     startedSpin = false;
                     wheelMode = WheelMode.idle;
                 }
-                else if(wheelLogicLoopNumber == prizes.Length) {
-                    startedSpin = false;
-                    wheelLogicLoopNumber = 0;
-                    wheelMode = WheelMode.idle;
-                }
+
+                Debug.Log(NormalizeAngle(prize.endAngle));
             }
         }
     }
