@@ -40,11 +40,9 @@ public class Gambling : MonoBehaviour
 
 
     void Update() {
-        if(!UIManager.isPaused) {
-            wheelAngle = wheel.transform.eulerAngles.z;
+        wheelAngle = wheel.transform.eulerAngles.z;
 
-            WheelLogic();
-        }
+        WheelLogic();
     }
 
     //Gamble UI
@@ -52,17 +50,9 @@ public class Gambling : MonoBehaviour
         if(wheelMode == WheelMode.idle) {
             tax = newTax;
 
-            if(Input.GetKeyDown(KeyCode.E)) OpenGUI(gambleUI);
-            if(Input.GetKeyDown(KeyCode.Escape)) CloseGUI(gambleUI);
+            if(Input.GetKeyDown(KeyCode.E)) UIManager.OpenGUI(gambleUI);
+            if(Input.GetKeyUp(KeyCode.Escape)) UIManager.CloseGUI(gambleUI);
         }
-    }
-    void OpenGUI(GameObject guiObject) {
-        Movement.canMove = false;
-        guiObject.SetActive(true);
-    }
-    void CloseGUI(GameObject guiObject) {
-        Movement.canMove = true;
-        guiObject.SetActive(false);
     }
 
     public void GrabInputField() {
@@ -83,7 +73,7 @@ public class Gambling : MonoBehaviour
         if(tax.money >= moneyInput && moneyInput > 0 && wheelMode == WheelMode.idle && startedSpin == false) {          
             Debug.Log("Started spin");
 
-            CloseGUI(gambleUI);
+            UIManager.CloseGUI(gambleUI);
 
             tax.money -= moneyInput;
             wheelMode = WheelMode.spinning;

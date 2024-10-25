@@ -23,15 +23,16 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject blockDataPath;
 
     public static bool isPaused = false;
+    public static int openGUIs;
 
 
     void Start() {
-        isPaused = false;
+        Unpause();
     }
 
     void Update() {
         HandlePauseMenu();
-
+        
         if(settingsMenu.activeSelf) {
             audioText.text = audioSlider.value.ToString("0.00");
         }
@@ -41,36 +42,63 @@ public class UIManager : MonoBehaviour
 
     //General methods
     void HandlePauseMenu() {
-        if(Input.GetKeyDown(KeyCode.Escape) && !isPaused) {
-            pauseMenu.SetActive(true);
-            isPaused = true;
-        }
-        else if(Input.GetKeyDown(KeyCode.Escape) && isPaused) {
-            config.WriteConfig();
+        if(pauseMenu) {
+            if(Input.GetKeyDown(KeyCode.Escape) && !isPaused && CanToggleGUI()) {
+                OpenGUI(pauseMenu);
+                Pause();
+            }
+            else if(Input.GetKeyDown(KeyCode.Escape) && isPaused) {
+                config.WriteConfig();
 
-            pauseMenu.SetActive(false);
-            settingsMenu.SetActive(false);
-            isPaused = false;
+                CloseGUI(pauseMenu);
+                CloseGUI(settingsMenu);
+                Unpause();
+            }
         }
     }
     public void UpdateSliders(float audio) {
         audioSlider.value = audio;
     }
 
+    public static void OpenGUI(GameObject gui) {
+        if(!gui.activeSelf && CanToggleGUI()) {
+            openGUIs += 1;
+
+            Movement.canMove = false;
+            gui.SetActive(true);
+        }
+    }
+    public static void OpenGUIForce(GameObject gui) {
+        if(!gui.activeSelf) {
+            openGUIs += 1;
+
+            Movement.canMove = false;
+            gui.SetActive(true);
+        }
+    }
+    public static void CloseGUI(GameObject gui) {
+        if(gui.activeSelf) {
+            openGUIs -= 1;
+
+            Movement.canMove = true;
+            gui.SetActive(false);
+        }
+    }
+
     //Buttons
     public void _PM_Resume() {
         config.WriteConfig();
 
-        pauseMenu.SetActive(false);
-        settingsMenu.SetActive(false);
-        isPaused = false;
+        CloseGUI(pauseMenu);
+        CloseGUI(settingsMenu);
+        Unpause();
     }
     public void _PM_Settings() {
-        if(settingsMenu.activeSelf) settingsMenu.SetActive(false);
-        else settingsMenu.SetActive(true);
+        if(settingsMenu.activeSelf) CloseGUI(settingsMenu);
+        else OpenGUIForce(settingsMenu);
     }
     public void _PM_Menu() {
-        isPaused = false;
+        Unpause();
         SceneManager.LoadScene(0);
     }
     public void _PM_Quit() {
@@ -79,10 +107,10 @@ public class UIManager : MonoBehaviour
     public void _Settings_Close() {
         config.WriteConfig();
 
-        settingsMenu.SetActive(false);
+        CloseGUI(settingsMenu);
     }
     public void _Main_Play() {
-        isPaused = false;
+        Unpause();
         SceneManager.LoadScene(1);
     }
     public void _Main_ToggleShowPath() {
@@ -94,5 +122,22 @@ public class UIManager : MonoBehaviour
     public void _GameOver_Retry() {
         isPaused = false;
         SceneManager.LoadScene(1);
+    }
+    /////////////////////////////////////
+
+
+    void Pause() {
+        isPaused = true;
+        Time.timeScale = 0;
+    }
+
+    void Unpause() {
+        isPaused = false;
+        Time.timeScale = 1;
+    }
+
+    //GUI can toggle stuff
+    public static bool CanToggleGUI() {
+        return openGUIs <= 0;
     }
 }

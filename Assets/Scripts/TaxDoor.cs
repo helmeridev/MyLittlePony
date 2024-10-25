@@ -14,12 +14,19 @@ public class TaxDoor : MonoBehaviour
     public bool didCollect;
 
     public void GUI(GameObject guiObject, TMP_Text text, TaxManager tax) {
-        if(Input.GetKeyDown(KeyCode.E)) OpenGUI(guiObject);
-        if(Input.GetKeyDown(KeyCode.Escape)) CloseGUI(guiObject);
+        if(Input.GetKeyDown(KeyCode.E)) {
+            UIManager.OpenGUI(guiObject);
+            diaNumber = 0;
+        }
+        if(Input.GetKeyUp(KeyCode.Escape)) {
+            UIManager.CloseGUI(guiObject);
+            diaNumber = 0;
+        }
         if(GUI_NextInput() && guiObject.activeSelf) diaNumber += 1;
         
         if(diaNumber > dialogue.Count - 1) {
-            CloseGUI(guiObject);
+            UIManager.CloseGUI(guiObject);
+            diaNumber = 0;
             if(!didCollect) tax.money += cash;
             didCollect = true;
         }
@@ -31,16 +38,6 @@ public class TaxDoor : MonoBehaviour
         else {
             text.text = dialogue[diaNumber];
         }
-    }
-    void OpenGUI(GameObject guiObject) {
-        Movement.canMove = false;
-        diaNumber = 0;
-        guiObject.SetActive(true);
-    }
-    void CloseGUI(GameObject guiObject) {
-        Movement.canMove = true;
-        guiObject.SetActive(false);
-        diaNumber = 0;
     }
 
     void Start() {
