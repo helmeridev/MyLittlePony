@@ -11,7 +11,7 @@ public class Config : MonoBehaviour
     UIManager UI;
 
     public static float masterAudio;
-
+    
     public static float default_masterAudio = 1;
 
     

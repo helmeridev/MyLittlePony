@@ -100,7 +100,7 @@ public class UIManager : MonoBehaviour
     }
     public void _PM_Menu() {
         Unpause();
-        SceneManager.LoadScene(0);
+        LevelManager.SetLevel(0);
     }
     public void _PM_Quit() {
         Application.Quit();
@@ -113,7 +113,7 @@ public class UIManager : MonoBehaviour
     public void _Main_Play() {
         Unpause();
         openGUIs = 0;
-        SceneManager.LoadScene(1);
+        LevelManager.NextLevel();
     }
     public void _Main_ToggleShowPath() {
         blockDataPath.SetActive(!blockDataPath.activeSelf);
@@ -123,7 +123,7 @@ public class UIManager : MonoBehaviour
     }
     public void _GameOver_Retry() {
         isPaused = false;
-        SceneManager.LoadScene(1);
+        LevelManager.NextLevel();
     }
     /////////////////////////////////////
 

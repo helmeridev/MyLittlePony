@@ -61,10 +61,8 @@ MonoBehaviour:
   config: {fileID: 4031984163609915025}
   pauseMenu: {fileID: 0}
   settingsMenu: {fileID: 0}
-  sensitivitySlider: {fileID: 0}
   audioSlider: {fileID: 0}
-  sensitivityText: {fileID: 0}
   audioText: {fileID: 0}
   dataPathText: {fileID: 0}
   blockDataPath: {fileID: 0}
-  sdsds: 0
+  dialogueUI: {fileID: 0}
