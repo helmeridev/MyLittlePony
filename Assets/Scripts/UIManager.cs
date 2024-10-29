@@ -32,6 +32,9 @@ public class UIManager : MonoBehaviour
     }
 
     void Update() {
+        Debug.Log("IsPaused: " + isPaused);
+        Debug.Log("CanMove: " + Movement.canMove);
+        Debug.Log("Time: " + Time.timeScale);
         HandlePauseMenu();
         
         if(settingsMenu.activeSelf) {
@@ -112,6 +115,7 @@ public class UIManager : MonoBehaviour
     }
     public void _Main_Play() {
         Unpause();
+        openGUIs = 0;
         SceneManager.LoadScene(1);
     }
     public void _Main_ToggleShowPath() {
@@ -134,6 +138,7 @@ public class UIManager : MonoBehaviour
 
     void Unpause() {
         isPaused = false;
+        Movement.canMove = true;
         Time.timeScale = 1;
     }
 
