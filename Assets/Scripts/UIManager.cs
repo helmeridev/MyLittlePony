@@ -32,9 +32,6 @@ public class UIManager : MonoBehaviour
     }
 
     void Update() {
-        Debug.Log("IsPaused: " + isPaused);
-        Debug.Log("CanMove: " + Movement.canMove);
-        Debug.Log("Time: " + Time.timeScale);
         HandlePauseMenu();
         
         if(settingsMenu.activeSelf) {

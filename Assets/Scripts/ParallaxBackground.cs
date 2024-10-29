@@ -14,9 +14,9 @@ public class ParallaxController : MonoBehaviour
     public Background[] backgrounds;
 
     void Start() {
-        int backCount = transform.childCount;
+        int bgCount = transform.childCount;
 
-        for(int i = 0; i < backCount; i++) {
+        for(int i = 0; i < bgCount; i++) {
             backgrounds[i].mat = transform.GetChild(i).gameObject.GetComponent<Renderer>().material;
         }
     }
