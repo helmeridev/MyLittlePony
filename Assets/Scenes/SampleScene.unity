@@ -809,6 +809,10 @@ PrefabInstance:
       propertyPath: gamblingMoneyInputField
       value: 
       objectReference: {fileID: 1984659174}
+    - target: {fileID: 3636988064026885323, guid: df038b6ec10c5fd44bcfbc0945ab4fd4, type: 3}
+      propertyPath: housePrefab.Array.data[0]
+      value: 
+      objectReference: {fileID: 177809697748041925, guid: 673e8df8b7531d643ab6bfdef5126af4, type: 3}
     - target: {fileID: 5808389705501264117, guid: df038b6ec10c5fd44bcfbc0945ab4fd4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
