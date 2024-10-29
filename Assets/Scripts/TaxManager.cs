@@ -16,7 +16,7 @@ public class TaxManager : MonoBehaviour
 
     void Update() {
         if(taxDoor) {
-            taxDoor.GUI(dialogueUI, dialogueText, this);
+            taxDoor.GUI(dialogueUI, dialogueText, this, dialogueUI);
         }
         if(gambling) {
             gambling.GUI(this);

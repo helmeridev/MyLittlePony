@@ -13,10 +13,14 @@ public class TaxDoor : MonoBehaviour
     public int diaNumber = 0;
     public bool didCollect;
 
-    public void GUI(GameObject guiObject, TMP_Text text, TaxManager tax) {
-        if(Input.GetKeyDown(KeyCode.E)) {
+    [Header("Enter")]
+    [SerializeField] Animator cAnimator;
+
+    public void GUI(GameObject guiObject, TMP_Text text, TaxManager tax, GameObject dialogueUI) {
+        if(Input.GetKeyDown(KeyCode.E) && !guiObject.activeInHierarchy) {
             UIManager.OpenGUI(guiObject);
             diaNumber = 0;
+            DoorEnter(dialogueUI.GetComponent<Animator>());
         }
         if(Input.GetKeyUp(KeyCode.Escape)) {
             UIManager.CloseGUI(guiObject);
@@ -42,6 +46,11 @@ public class TaxDoor : MonoBehaviour
 
     void Start() {
         cash = Mathf.Round(Random.Range(cashRange.x, cashRange.y + 1) * 10) * 0.1f;
+    }
+
+    void DoorEnter(Animator animator) {
+        Debug.Log("Anim play");
+        animator.Play("DoorEnter");
     }
 
     bool GUI_NextInput() {

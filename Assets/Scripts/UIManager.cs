@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour
     [Header("Other")]
     [SerializeField] TMP_Text dataPathText;
     [SerializeField] GameObject blockDataPath;
+    public GameObject dialogueUI;
 
     public static bool isPaused = false;
     public static int openGUIs;
