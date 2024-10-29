@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class MapGeneration : MonoBehaviour
@@ -13,6 +14,10 @@ public class MapGeneration : MonoBehaviour
     [SerializeField] List<GameObject> housePrefab = new List<GameObject>();
     [SerializeField] Transform groundChunkStartPos;
     public Transform nextChunkPos;
+
+    [Header("Other")]
+    [SerializeField] GameObject gamblingUI;
+    [SerializeField] TMP_InputField gamblingMoneyInputField;
     
     void Start() {
         MapInstantiate();
@@ -34,7 +39,7 @@ public class MapGeneration : MonoBehaviour
                 }
             }
             else if(i == 0) {
-                Instantiate(lastGroundChunk, nextChunkPos.position, lastGroundChunk.transform.rotation);
+                lastGroundChunk.transform.position = nextChunkPos.position;
             }
             else {
                 int chunkNumber = Random.Range(0, groundChunks.Count);

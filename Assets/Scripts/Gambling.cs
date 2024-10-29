@@ -10,8 +10,8 @@ public class Gambling : MonoBehaviour
     TaxManager tax;
 
     [SerializeField] Rigidbody2D wheel;
-    [SerializeField] GameObject gambleUI;
-    [SerializeField] TMP_InputField moneyInputField;
+    public GameObject gambleUI;
+    public TMP_InputField moneyInputField;
 
     [Header("Properties")]
     [SerializeField] Vector2 spinSpeed;

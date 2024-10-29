@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8906511a9c4412d4cacff8b4a16d69bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfChunks: 4
+  numberOfChunks: 1
   lastGroundChunk: {fileID: 6220282221981892111, guid: d94283dac1a1e7f48babc435e24b85a2, type: 3}
   groundChunks:
   - {fileID: 3069689423574387755, guid: 0b7294d6fc9d69e4e8391d161e060087, type: 3}
@@ -53,6 +53,8 @@ MonoBehaviour:
   - {fileID: 6072569823831455686, guid: bd0b2cabc94dd0648bcbf034575d6ade, type: 3}
   groundChunkStartPos: {fileID: 2631916696803417141}
   nextChunkPos: {fileID: 0}
+  gamblingUI: {fileID: 0}
+  gamblingMoneyInputField: {fileID: 0}
 --- !u!1 &7233454679515901741
 GameObject:
   m_ObjectHideFlags: 0
