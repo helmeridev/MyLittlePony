@@ -7,7 +7,7 @@ public class ParallaxController : MonoBehaviour
     [SerializeField] Transform cam;
     [System.Serializable]
     public struct Background {
-        [Range(0.01f, 0.05f)]
+        [Range(-0.05f, 0.05f)]
         public float speed;
         public Material mat;
     }
