@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
     Rigidbody2D rb;
+
+    [SerializeField] SpriteRenderer[] spriteRenderer;
+    [SerializeField] Animator animator;
 
     [SerializeField] private float moveSpeed;
     [SerializeField] private float jumpForce;
@@ -16,6 +20,7 @@ public class Movement : MonoBehaviour
     }
 
     private float horizontal;
+    private bool isFacingRight = true;
     [SerializeField, Space(5)] private Transform feet;
     [SerializeField] private LayerMask jumpLayer;
     [SerializeField] private float maxFeetDist;
@@ -33,11 +38,30 @@ public class Movement : MonoBehaviour
         else if(Mathf.Abs(rb.velocity.x) > 0){
             rb.velocity = Vector3.zero;
         }
+
+        if(Mathf.Abs(horizontal) > 0) {
+            animator.Play("Walking");
+        }
+        else {
+            animator.Play("Idle");
+        }
+
+        Flip();
     }
 
     void FixedUpdate() {
         if(canMove) {
             rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
+        }
+    }
+
+    void Flip() {
+        if(isFacingRight && horizontal < 0 || !isFacingRight && horizontal > 0) {
+            foreach(SpriteRenderer sprite in spriteRenderer) {
+                sprite.flipX = !sprite.flipX;
+            }
+
+            isFacingRight = !isFacingRight;
         }
     }
 
