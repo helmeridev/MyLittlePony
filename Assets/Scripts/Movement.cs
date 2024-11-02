@@ -7,7 +7,7 @@ public class Movement : MonoBehaviour
 {
     Rigidbody2D rb;
 
-    [SerializeField] SpriteRenderer[] spriteRenderer;
+    [SerializeField] Transform sprite;
     [SerializeField] Animator animator;
 
     [SerializeField] private float moveSpeed;
@@ -56,12 +56,15 @@ public class Movement : MonoBehaviour
     }
 
     void Flip() {
-        if(isFacingRight && horizontal < 0 || !isFacingRight && horizontal > 0) {
-            foreach(SpriteRenderer sprite in spriteRenderer) {
-                sprite.flipX = !sprite.flipX;
-            }
+        if(isFacingRight && horizontal < 0) {
+            sprite.rotation = Quaternion.Euler(0, 180, 0);
 
-            isFacingRight = !isFacingRight;
+            isFacingRight = false;
+        }
+        else if(!isFacingRight && horizontal > 0) {
+            sprite.rotation = Quaternion.Euler(0, 0, 0);
+
+            isFacingRight = true;
         }
     }
 
