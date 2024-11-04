@@ -12,8 +12,10 @@ public class MapGeneration : MonoBehaviour
     [SerializeField] GameObject lastGroundChunk;
     [SerializeField] List<GameObject> groundChunks = new List<GameObject>();
     [SerializeField] List<GameObject> housePrefab = new List<GameObject>();
+    [SerializeField] GameObject bobHouse;
     [SerializeField] Transform groundChunkStartPos;
     public Transform nextChunkPos;
+    private bool isBobHouse;
 
     [Header("Other")]
     [SerializeField] GameObject gamblingUI;
@@ -25,6 +27,7 @@ public class MapGeneration : MonoBehaviour
 
     void MapInstantiate() {
         for(int i = numberOfChunks; i >= 0; i--) {
+            //First Chunk
             if(i == numberOfChunks) {
                 GameObject newChunk = Instantiate(
                     groundChunks[0], 
@@ -35,12 +38,13 @@ public class MapGeneration : MonoBehaviour
                 nextChunkPos = groundChunk.nextChunkPos;
 
                 for(int j = groundChunk.housePos.Count - 1; j >= 0; j--) {
-                    HouseInstantiate(groundChunk.housePos[j]);
+                    HouseInstantiate(groundChunk.housePos[j], i);
                 }
             }
             else if(i == 0) {
                 lastGroundChunk.transform.position = nextChunkPos.position;
             }
+            //Rest of the chunks
             else {
                 int chunkNumber = Random.Range(0, groundChunks.Count);
 
@@ -53,14 +57,20 @@ public class MapGeneration : MonoBehaviour
                 nextChunkPos = groundChunk.nextChunkPos;
 
                 for(int j = groundChunk.housePos.Count - 1; j >= 0; j--) {
-                    HouseInstantiate(groundChunk.housePos[j]);
+                    HouseInstantiate(groundChunk.housePos[j], i);
                 }
             }
         }
     }
-    void HouseInstantiate(Transform spawnPos) {
-        int houseNumber = Random.Range(0, housePrefab.Count);
+    void HouseInstantiate(Transform spawnPos, int chunkNumber) {
+        if(bobHouse && chunkNumber == 1 && !isBobHouse) {
+            Instantiate(bobHouse, spawnPos.position, bobHouse.transform.rotation);
+            isBobHouse = true;
+        }
+        else {
+            int houseNumber = Random.Range(0, housePrefab.Count);
 
-        Instantiate(housePrefab[houseNumber], spawnPos.position, housePrefab[houseNumber].transform.rotation);
+            Instantiate(housePrefab[houseNumber], spawnPos.position, housePrefab[houseNumber].transform.rotation);
+        }
     }
 }

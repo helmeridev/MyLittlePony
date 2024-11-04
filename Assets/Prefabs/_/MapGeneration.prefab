@@ -45,12 +45,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8906511a9c4412d4cacff8b4a16d69bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfChunks: 1
-  lastGroundChunk: {fileID: 6220282221981892111, guid: d94283dac1a1e7f48babc435e24b85a2, type: 3}
+  numberOfChunks: 3
+  lastGroundChunk: {fileID: 0}
   groundChunks:
   - {fileID: 3069689423574387755, guid: 0b7294d6fc9d69e4e8391d161e060087, type: 3}
   housePrefab:
-  - {fileID: 6072569823831455686, guid: bd0b2cabc94dd0648bcbf034575d6ade, type: 3}
+  - {fileID: 177809697748041925, guid: 673e8df8b7531d643ab6bfdef5126af4, type: 3}
+  bobHouse: {fileID: 177809697748041925, guid: ffd559071eb743149be9c825e577cb9d, type: 3}
   groundChunkStartPos: {fileID: 2631916696803417141}
   nextChunkPos: {fileID: 0}
   gamblingUI: {fileID: 0}
@@ -80,7 +81,7 @@ Transform:
   m_GameObject: {fileID: 7233454679515901741}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.5, y: -4.5, z: 0}
+  m_LocalPosition: {x: 9, y: -4.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
