@@ -63,14 +63,25 @@ public class MapGeneration : MonoBehaviour
         }
     }
     void HouseInstantiate(Transform spawnPos, int chunkNumber) {
-        if(bobHouse && chunkNumber == 1 && !isBobHouse) {
-            Instantiate(bobHouse, spawnPos.position, bobHouse.transform.rotation);
-            isBobHouse = true;
+        if(bobHouse && !isBobHouse) {
+            if(chunkNumber == 1) {
+                Instantiate(bobHouse, spawnPos.position, bobHouse.transform.rotation, spawnPos);
+                isBobHouse = true;
+            }
+            else if(Random.Range(0, 6) == 1) {
+                Instantiate(bobHouse, spawnPos.position, bobHouse.transform.rotation, spawnPos);
+                isBobHouse = true;
+            }
+            else {
+                int houseNumber = Random.Range(0, housePrefab.Count);
+
+                Instantiate(housePrefab[houseNumber], spawnPos.position, housePrefab[houseNumber].transform.rotation, spawnPos);
+            }
         }
         else {
             int houseNumber = Random.Range(0, housePrefab.Count);
 
-            Instantiate(housePrefab[houseNumber], spawnPos.position, housePrefab[houseNumber].transform.rotation);
+            Instantiate(housePrefab[houseNumber], spawnPos.position, housePrefab[houseNumber].transform.rotation, spawnPos);
         }
     }
 }
