@@ -12,10 +12,10 @@ public class MapGeneration : MonoBehaviour
     [SerializeField] GameObject lastGroundChunk;
     [SerializeField] List<GameObject> groundChunks = new List<GameObject>();
     [SerializeField] List<GameObject> housePrefab = new List<GameObject>();
-    [SerializeField] GameObject bobHouse;
+    [SerializeField] List<GameObject> specialHousePrefab = new List<GameObject>();
     [SerializeField] Transform groundChunkStartPos;
     public Transform nextChunkPos;
-    private bool isBobHouse;
+    private bool isSpecialHouse;
 
     [Header("Other")]
     [SerializeField] GameObject gamblingUI;
@@ -63,14 +63,24 @@ public class MapGeneration : MonoBehaviour
         }
     }
     void HouseInstantiate(Transform spawnPos, int chunkNumber) {
-        if(bobHouse && !isBobHouse) {
+        if(!isSpecialHouse) {
             if(chunkNumber == 1) {
-                Instantiate(bobHouse, spawnPos.position, bobHouse.transform.rotation, spawnPos);
-                isBobHouse = true;
+                int sHouseNumber = Random.Range(0, specialHousePrefab.Count);
+
+                Instantiate(specialHousePrefab[sHouseNumber],
+                            spawnPos.position,
+                            specialHousePrefab[sHouseNumber].transform.rotation,
+                            spawnPos);
+                isSpecialHouse = true;
             }
             else if(Random.Range(0, 6) == 1) {
-                Instantiate(bobHouse, spawnPos.position, bobHouse.transform.rotation, spawnPos);
-                isBobHouse = true;
+                int sHouseNumber = Random.Range(0, specialHousePrefab.Count);
+
+                Instantiate(specialHousePrefab[sHouseNumber],
+                            spawnPos.position,
+                            specialHousePrefab[sHouseNumber].transform.rotation,
+                            spawnPos);
+                isSpecialHouse = true;
             }
             else {
                 int houseNumber = Random.Range(0, housePrefab.Count);

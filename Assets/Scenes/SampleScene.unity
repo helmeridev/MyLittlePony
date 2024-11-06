@@ -673,6 +673,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1549709315}
     - target: {fileID: 3636988064026885323, guid: df038b6ec10c5fd44bcfbc0945ab4fd4, type: 3}
+      propertyPath: numberOfChunks
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3636988064026885323, guid: df038b6ec10c5fd44bcfbc0945ab4fd4, type: 3}
       propertyPath: lastGroundChunk
       value: 
       objectReference: {fileID: 882464005}
@@ -680,6 +684,14 @@ PrefabInstance:
       propertyPath: gamblingMoneyInputField
       value: 
       objectReference: {fileID: 1984659174}
+    - target: {fileID: 3636988064026885323, guid: df038b6ec10c5fd44bcfbc0945ab4fd4, type: 3}
+      propertyPath: specialHousePrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3636988064026885323, guid: df038b6ec10c5fd44bcfbc0945ab4fd4, type: 3}
+      propertyPath: specialHousePrefab.Array.data[0]
+      value: 
+      objectReference: {fileID: 177809697748041925, guid: ffd559071eb743149be9c825e577cb9d, type: 3}
     - target: {fileID: 5808389705501264117, guid: df038b6ec10c5fd44bcfbc0945ab4fd4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
