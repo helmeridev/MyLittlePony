@@ -176,7 +176,7 @@ MonoBehaviour:
   - {x: 0.9361517, y: -1.2776212, z: 0}
   m_ShapePathHash: -627244563
   m_Mesh: {fileID: 0}
-  m_InstanceId: 36896
+  m_InstanceId: 32320
   m_LocalBounds:
     m_Center: {x: 0.15526706, y: -0.028869987, z: 0}
     m_Extent: {x: 1.079146, y: 1.2487512, z: 0}
@@ -265,8 +265,36 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7427313806840860166, guid: bd0b2cabc94dd0648bcbf034575d6ade, type: 3}
+      propertyPath: afterDialogue
+      value: You already came here.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7427313806840860166, guid: bd0b2cabc94dd0648bcbf034575d6ade, type: 3}
+      propertyPath: dialogue.Array.data[0]
+      value: Oh hi its you
+      objectReference: {fileID: 0}
+    - target: {fileID: 7427313806840860166, guid: bd0b2cabc94dd0648bcbf034575d6ade, type: 3}
+      propertyPath: dialogue.Array.data[1]
+      value: Are you here for the taxes?
+      objectReference: {fileID: 0}
+    - target: {fileID: 7427313806840860166, guid: bd0b2cabc94dd0648bcbf034575d6ade, type: 3}
+      propertyPath: dialogue.Array.data[2]
+      value: Okay here you go!
+      objectReference: {fileID: 0}
+    - target: {fileID: 7427313806840860166, guid: bd0b2cabc94dd0648bcbf034575d6ade, type: 3}
       propertyPath: robDialogue.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7427313806840860166, guid: bd0b2cabc94dd0648bcbf034575d6ade, type: 3}
+      propertyPath: robDialogue.Array.data[0]
+      value: Oh hi its you
+      objectReference: {fileID: 0}
+    - target: {fileID: 7427313806840860166, guid: bd0b2cabc94dd0648bcbf034575d6ade, type: 3}
+      propertyPath: robDialogue.Array.data[1]
+      value: I don't feel like paying my taxes..
+      objectReference: {fileID: 0}
+    - target: {fileID: 7427313806840860166, guid: bd0b2cabc94dd0648bcbf034575d6ade, type: 3}
+      propertyPath: robDialogue.Array.data[2]
+      value: GIVE ME ALL YOUR MONEY
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
