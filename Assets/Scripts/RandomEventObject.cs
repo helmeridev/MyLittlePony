@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class RandomEventObject : MonoBehaviour
 {
-    public GameObject rpsUI;
-    RPS rps;
+    public RandomEventManager eventManager;
+    public RPS rps;
     public enum RandomEvent {
         Robber
     }
@@ -30,8 +30,6 @@ public class RandomEventObject : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) {
         if(other.CompareTag("Player")) {
             Debug.Log("Robber event");
-            rps = GetComponent<RPS>();
-            rps.rpsUI = rpsUI;
             rps.gameloop = true;
         }
     }

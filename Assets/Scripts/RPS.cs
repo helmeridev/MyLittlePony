@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class RPS : MonoBehaviour
 {
-    TaxManager taxManager;
-    public GameObject rpsUI;
+    [SerializeField] TaxManager taxManager;
+    RandomEventManager eventManager;
     public bool gameloop = false;
     int rpsPlayer = 0;
     int rpsGame = 0;
@@ -19,7 +19,8 @@ public class RPS : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        eventManager = GetComponent<RandomEventManager>();
+        remainingTime = maxTime;
     }
 
     // Update is called once per frame
@@ -37,7 +38,7 @@ public class RPS : MonoBehaviour
         remainingTime -= Time.deltaTime;
         if (remainingTime > 0) 
         {
-            rpsUI.SetActive(true);
+            eventManager.rpsUI.SetActive(true);
         }
 
         if (remainingTime < 0)
@@ -49,7 +50,7 @@ public class RPS : MonoBehaviour
 
                 if (rpsGame == rpsPlayer)
                 {
-                    //tasapeli
+                    draw();
                 }
                 if (rpsPlayer == 1 && rpsGame == 3)
                 {
@@ -74,16 +75,19 @@ public class RPS : MonoBehaviour
     public void chooseRock()
     {
         rpsPlayer = 1;
+        remainingTime = 0;
 
     }
     public void choosePaper()
     {
         rpsPlayer = 2;
+        remainingTime = 0;
     }
 
     public void chooseScissors()
     {
         rpsPlayer = 3;
+        remainingTime = 0;
     }
 
     public void win()
@@ -94,24 +98,30 @@ public class RPS : MonoBehaviour
             taxManager.AddMoney(Mathf.Round(Random.Range(15, 20) * 10) * 0.1f);
         }
 
-        rpsUI.SetActive(false);
-        Destroy(gameObject);
+        eventManager.rpsUI.SetActive(false);
+        Destroy(eventManager.robberInstance);
+        remainingTime = maxTime;
+        gameloop = false;
     }
 
     public void lose()
     {
         if (taxManager != null)
         {
-            taxManager.AddMoney(Mathf.Round(Random.Range(-15, -20) * 10) * 0.1f);
+            taxManager.AddMoney(Mathf.Round(Random.Range(-20, -15) * 10) * 0.1f);
         }
-        rpsUI.SetActive(false);
-        Destroy(gameObject);
+        eventManager.rpsUI.SetActive(false);
+        Destroy(eventManager.robberInstance);
+        remainingTime = maxTime;
+        gameloop = false;
     }
 
     public void draw()
     {
-        rpsUI.SetActive(false );
-        Destroy(gameObject);
+        eventManager.rpsUI.SetActive(false );
+        Destroy(eventManager.robberInstance);
+        remainingTime = maxTime;
+        gameloop = false;
     }
 }
 

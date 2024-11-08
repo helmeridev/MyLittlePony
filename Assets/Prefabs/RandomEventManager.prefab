@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8437907481489464414}
   - component: {fileID: 1733236360517711947}
+  - component: {fileID: 3342598766707483422}
   m_Layer: 0
   m_Name: RandomEventManager
   m_TagString: Untagged
@@ -46,5 +47,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomEvent: 0
   robberPrefab: {fileID: 3988439879989515550, guid: 6f1de59fe2f7db74c83bffb76a76862e, type: 3}
+  robberInstance: {fileID: 0}
   player: {fileID: 0}
   activateTresholds: {x: 20, y: 30}
+  rpsUI: {fileID: 0}
+--- !u!114 &3342598766707483422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 829326014990860754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f9f8980fe386a043bb3a8d94d376a99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameloop: 0
+  maxTime: 5

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1893179861731882366}
   - component: {fileID: 174771038788668006}
   - component: {fileID: 4728476618628622694}
+  - component: {fileID: -4355933554130770956}
   m_Layer: 8
   m_Name: robber
   m_TagString: Untagged
@@ -143,6 +144,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f1bf4967f9a717498b5d802e688bcd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rpsUI: {fileID: 0}
   randomEvent: 0
   player: {fileID: 0}
   robberSpeed: 7
+--- !u!114 &-4355933554130770956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3988439879989515550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f9f8980fe386a043bb3a8d94d376a99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rpsUI: {fileID: 0}
+  gameloop: 0
+  maxTime: 5
