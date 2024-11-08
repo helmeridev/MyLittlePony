@@ -8,38 +8,44 @@ public class RandomEventManager : MonoBehaviour
         Robber
     }
     public RandomEvent randomEvent;
-    public bool isEventActive;
-    [SerializeField] float activateTreshold = 100;
+    [SerializeField] GameObject robberPrefab;
     [SerializeField] Transform player;
-    [SerializeField] float robberSpeed = 7f;
+    [SerializeField] Vector2 activateTresholds;
+    private float activateTreshold = 50;
+    private float currentDistance;
+    bool isEventReady;
+    bool didSpawn;
+
+    void Start() {
+        activateTreshold = Random.Range(activateTresholds.x, activateTresholds.y);
+    }
 
     void Update() {
         EventLogic();
     }
 
     void EventLogic() {
-        
-        
-        switch (randomEvent) {
-            case RandomEvent.Robber:
-                RobberEvent();
-                break;
+        currentDistance = Vector3.Distance(new Vector3(0, player.position.y, player.position.z), player.position);
+
+        if(currentDistance > activateTreshold) {
+            isEventReady = true;
         }
-    }
+        
+        if(isEventReady && !didSpawn) {
+            switch (randomEvent) {
+                case RandomEvent.Robber:
+                    Vector3 spawnPos = new Vector3(player.position.x - 30, -3.5f, player.position.z);
+                    GameObject newPrefab = Instantiate(robberPrefab, spawnPos, robberPrefab.transform.rotation);
+                    RandomEventObject eventObject = newPrefab.GetComponent<RandomEventObject>();
+                    eventObject.randomEvent = RandomEventObject.RandomEvent.Robber;
+                    eventObject.player = player;
+                    break;
+                default:
+                    break;
+            }
 
-    //Events
-    void RobberEvent() {
-        if(isEventActive) {
-            Vector3 playerPos = new Vector3(player.position.x, transform.position.y, transform.position.z);
-
-            transform.position = Vector3.MoveTowards(transform.position, playerPos, robberSpeed * Time.deltaTime);
-        }
-    }
-
-    void OnTriggerEnter2D(Collider2D other) {
-        if(other.CompareTag("Player")) {
-            Debug.Log("Robber event");
-            //Call rock paper scissors
+            isEventReady = false;
+            didSpawn = true;
         }
     }
 }
