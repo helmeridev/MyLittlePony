@@ -11,6 +11,7 @@ public class RandomEventManager : MonoBehaviour
     [SerializeField] GameObject robberPrefab;
     [SerializeField] Transform player;
     [SerializeField] Vector2 activateTresholds;
+    [SerializeField] GameObject rpsUI;
     private float activateTreshold = 50;
     private float currentDistance;
     bool isEventReady;
@@ -37,6 +38,7 @@ public class RandomEventManager : MonoBehaviour
                     Vector3 spawnPos = new Vector3(player.position.x - 30, -3.5f, player.position.z);
                     GameObject newPrefab = Instantiate(robberPrefab, spawnPos, robberPrefab.transform.rotation);
                     RandomEventObject eventObject = newPrefab.GetComponent<RandomEventObject>();
+                    eventObject.rpsUI = rpsUI;
                     eventObject.randomEvent = RandomEventObject.RandomEvent.Robber;
                     eventObject.player = player;
                     break;

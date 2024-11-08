@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class RPS : MonoBehaviour
 {
     TaxManager taxManager;
-    bool gameloop = true;
+    public GameObject rpsUI;
+    public bool gameloop = false;
     int rpsPlayer = 0;
     int rpsGame = 0;
 
@@ -18,43 +19,53 @@ public class NewBehaviourScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        RPS();
+        if (gameloop)
+        {
+            RPSgame();
+        }
+        
     }
 
-    void RPS()
+    void RPSgame()
     {
         remainingTime -= Time.deltaTime;
+        if (remainingTime > 0) 
+        {
+            rpsUI.SetActive(true);
+        }
 
-        if (remainingTime < 0 ) {
-            if (rpsGame == 0) {
+        if (remainingTime < 0)
+        {
+            if (rpsGame == 0)
+            {
                 if (rpsPlayer == 0) { rpsPlayer = (int)(Mathf.Round(Random.Range(1, 4) * 10) * 0.1f); }
-                rpsGame = (int)(Mathf.Round(Random.Range(1 , 4 ) * 10) * 0.1f);
+                rpsGame = (int)(Mathf.Round(Random.Range(1, 4) * 10) * 0.1f);
 
                 if (rpsGame == rpsPlayer)
                 {
                     //tasapeli
                 }
-                if (rpsPlayer == 1 &&  rpsGame == 3) 
+                if (rpsPlayer == 1 && rpsGame == 3)
                 {
-                    //win
+                    win();
                 }
-                if (rpsPlayer == 2 && rpsGame == 1) 
+                if (rpsPlayer == 2 && rpsGame == 1)
                 {
-                    //win
+                    win();
                 }
                 if (rpsPlayer == 3 && rpsGame == 2)
                 {
-                    //win
+                    win();
                 }
                 else
                 {
-                    //lose
+                    lose();
                 }
             }
         }
@@ -80,9 +91,27 @@ public class NewBehaviourScript : MonoBehaviour
 
         if (taxManager != null)
         {
-            taxManager.AddMoney(Mathf.Round(Random.Range(15, 20) * 10) * 0.1f); 
+            taxManager.AddMoney(Mathf.Round(Random.Range(15, 20) * 10) * 0.1f);
         }
 
-        Destroy(gameObject); 
+        rpsUI.SetActive(false);
+        Destroy(gameObject);
+    }
+
+    public void lose()
+    {
+        if (taxManager != null)
+        {
+            taxManager.AddMoney(Mathf.Round(Random.Range(-15, -20) * 10) * 0.1f);
+        }
+        rpsUI.SetActive(false);
+        Destroy(gameObject);
+    }
+
+    public void draw()
+    {
+        rpsUI.SetActive(false );
+        Destroy(gameObject);
     }
 }
+

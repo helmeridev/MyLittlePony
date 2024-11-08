@@ -14,27 +14,40 @@ public class TaxManager : MonoBehaviour
 
     [SerializeField] TMP_Text moneyText;
 
-    void Update() {
-        if(taxDoor) {
+    void Update()
+    {
+        if (taxDoor)
+        {
             taxDoor.GUI(dialogueUI, dialogueText, this, dialogueUI);
         }
-        if(gambling) {
+        if (gambling)
+        {
             gambling.GUI(this);
         }
 
         moneyText.text = money.ToString("0.00");
     }
 
-    void OnTriggerEnter2D(Collider2D other) {
-        if(taxDoor = other.GetComponent<TaxDoor>()) {}
-        if(gambling = other.GetComponent<Gambling>()) {}
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (taxDoor = other.GetComponent<TaxDoor>()) { }
+        if (gambling = other.GetComponent<Gambling>()) { }
     }
-    void OnTriggerExit2D(Collider2D other) {
-        if(other.GetComponent<TaxDoor>()) {
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.GetComponent<TaxDoor>())
+        {
             taxDoor = null;
         }
-        if(other.GetComponent<Gambling>()) {
+        if (other.GetComponent<Gambling>())
+        {
             gambling = null;
         }
+    }
+
+    public void AddMoney(float amount)
+    {
+        money += amount;
+        moneyText.text = money.ToString("0.00");
     }
 }
