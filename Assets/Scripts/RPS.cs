@@ -53,15 +53,15 @@ public class RPS : MonoBehaviour
                 {
                     draw();
                 }
-                if (rpsPlayer == 1 && rpsGame == 3)
+                else if (rpsPlayer == 1 && rpsGame == 3)
                 {
                     win();
                 }
-                if (rpsPlayer == 2 && rpsGame == 1)
+                else if (rpsPlayer == 2 && rpsGame == 1)
                 {
                     win();
                 }
-                if (rpsPlayer == 3 && rpsGame == 2)
+                else if (rpsPlayer == 3 && rpsGame == 2)
                 {
                     win();
                 }
