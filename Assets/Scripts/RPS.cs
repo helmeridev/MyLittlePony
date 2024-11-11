@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -92,13 +93,13 @@ public class RPS : MonoBehaviour
 
     public void win()
     {
-
-        if (taxManager != null)
-        {
-            taxManager.AddMoney(Mathf.Round(Random.Range(15, 20) * 10) * 0.1f);
-        }
+        float moneyDifference = Mathf.Round(Random.Range(10, 15) * 10) * 0.1f;
+        
+        taxManager.AddMoney(moneyDifference);
 
         eventManager.rpsUI.SetActive(false);
+        eventManager.rpsWinUI.SetActive(true);
+        eventManager.rpsWinUI.GetComponentInChildren<TMP_Text>().text = "You gained " + moneyDifference + " money!";
         Destroy(eventManager.robberInstance);
         remainingTime = maxTime;
         gameloop = false;
@@ -106,11 +107,13 @@ public class RPS : MonoBehaviour
 
     public void lose()
     {
-        if (taxManager != null)
-        {
-            taxManager.AddMoney(Mathf.Round(Random.Range(-20, -15) * 10) * 0.1f);
-        }
+        float moneyDifference = Mathf.Round(Random.Range(-20, -15) * 10) * 0.1f;
+        
+        taxManager.AddMoney(moneyDifference);
+
         eventManager.rpsUI.SetActive(false);
+        eventManager.rpsLoseUI.SetActive(true);
+        eventManager.rpsLoseUI.GetComponentInChildren<TMP_Text>().text = "You lost " + moneyDifference + " money!";
         Destroy(eventManager.robberInstance);
         remainingTime = maxTime;
         gameloop = false;
@@ -118,7 +121,9 @@ public class RPS : MonoBehaviour
 
     public void draw()
     {
-        eventManager.rpsUI.SetActive(false );
+        eventManager.rpsDrawUI.SetActive(true);
+        eventManager.rpsDrawUI.GetComponentInChildren<TMP_Text>().text = "You keep your money!";
+        eventManager.rpsUI.SetActive(false);
         Destroy(eventManager.robberInstance);
         remainingTime = maxTime;
         gameloop = false;

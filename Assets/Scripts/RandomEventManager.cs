@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class RandomEventManager : MonoBehaviour
@@ -13,6 +14,9 @@ public class RandomEventManager : MonoBehaviour
     [SerializeField] Transform player;
     [SerializeField] Vector2 activateTresholds;
     public GameObject rpsUI;
+    public GameObject rpsWinUI;
+    public GameObject rpsLoseUI;
+    public GameObject rpsDrawUI;
     private float activateTreshold = 50;
     private float currentDistance;
     bool isEventReady;
