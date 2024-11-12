@@ -700,12 +700,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03995864406032e459548669e271a578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer:
-  - {fileID: 6305258989933168856}
-  - {fileID: 6069571884034357719}
-  - {fileID: 4814313634172216582}
-  - {fileID: 3325939140608746792}
-  - {fileID: 7517603123460906404}
+  sprite: {fileID: 1834681197729344775}
   animator: {fileID: 951169041619686102}
   moveSpeed: 5.5
   jumpForce: 5
