@@ -29,6 +29,7 @@ public class BossAttack : MonoBehaviour
     void Attack() {
         remainingAttackTime = attackTime;
     }
+    
     bool CanAttack() {
         if(remainingAttackTime <= 0 &&
            manager.GetPointCollider(manager.attackCollider).IsColliding()
