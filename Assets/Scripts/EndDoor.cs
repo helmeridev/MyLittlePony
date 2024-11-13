@@ -7,7 +7,8 @@ public class EndDoor : MonoBehaviour
 {
     public enum TriggerEvent {
         NextLevel,
-        Plankton
+        Plankton,
+        MainMenu
     }
     public TriggerEvent triggerEvent;
 
@@ -17,6 +18,7 @@ public class EndDoor : MonoBehaviour
         if(other.gameObject.CompareTag("Player")) {
             if(triggerEvent == TriggerEvent.NextLevel) LevelManager.NextLevel();
             else if(triggerEvent == TriggerEvent.Plankton) LevelManager.SetLevel(planktonIndex);
+            else if(triggerEvent == TriggerEvent.Plankton) LevelManager.SetLevel(0);
         }
     }
 }
