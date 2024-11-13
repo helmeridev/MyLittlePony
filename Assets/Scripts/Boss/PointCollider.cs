@@ -12,6 +12,12 @@ public class PointCollider : MonoBehaviour
     void OnTriggerExit2D(Collider2D other) {
         isColliding = false;
     }
+    void OnCollisionStay2D(Collision2D other) {
+        isColliding = true;
+    }
+    void OnCollisionExit2D(Collision2D other) {
+        isColliding = false;
+    }
 
     public bool IsColliding() {
         if(isColliding) return true;
