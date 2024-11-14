@@ -6,6 +6,7 @@ public class BossAttack : MonoBehaviour
 {
     BossManager manager;
 
+    [SerializeField] Vector2 damage;
     [SerializeField] float attackTime;
     private float remainingAttackTime;
 
@@ -28,8 +29,16 @@ public class BossAttack : MonoBehaviour
 
     void Attack() {
         remainingAttackTime = attackTime;
+        manager.animator.Play("BossAttack1");
     }
-    
+
+    public void DealDamage() {
+        if(manager.GetPointCollider(manager.armLeft).IsColliding() ||
+           manager.GetPointCollider(manager.armRight).IsColliding()) {
+            manager.taxManager.money -= Random.Range(damage.x, damage.y);
+        }
+    }
+
     bool CanAttack() {
         if(remainingAttackTime <= 0 &&
            manager.GetPointCollider(manager.attackCollider).IsColliding()

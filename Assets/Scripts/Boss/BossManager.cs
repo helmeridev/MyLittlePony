@@ -15,7 +15,9 @@ public class BossManager : MonoBehaviour
 
     [Header("Other references")]
     public Transform player;
+    [HideInInspector] public TaxManager taxManager;
     public GameObject attackCollider;
+    [HideInInspector] public Animator animator;
 
     [HideInInspector] public bool isAttacking;
 
@@ -25,5 +27,10 @@ public class BossManager : MonoBehaviour
             Debug.LogError("Cannot get PointCollider from " + colliderObject.name + " because it does not have one!");
             return null;
         }
+    }
+
+    void Start() {
+        taxManager = player.gameObject.GetComponent<TaxManager>();
+        animator = GetComponent<Animator>();
     }
 }
