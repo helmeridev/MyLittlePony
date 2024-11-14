@@ -22,8 +22,10 @@ public class BossAttack : MonoBehaviour
     }
 
     void AttackLogic() {
-        if(CanAttack())  {
-            Attack();
+        if(manager.currentHealth > 0) {
+            if(CanAttack())  {
+                Attack();
+            }
         }
     }
 

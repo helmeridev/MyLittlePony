@@ -18,6 +18,11 @@ public class BossManager : MonoBehaviour
     [HideInInspector] public TaxManager taxManager;
     public GameObject attackCollider;
     [HideInInspector] public Animator animator;
+    public GameObject finishDoor;
+
+    [Header("Properties")]
+    public float maxHealth;
+    [HideInInspector] public float currentHealth;
 
     [HideInInspector] public bool isAttacking;
 
@@ -32,5 +37,6 @@ public class BossManager : MonoBehaviour
     void Start() {
         taxManager = player.gameObject.GetComponent<TaxManager>();
         animator = GetComponent<Animator>();
+        currentHealth = maxHealth;
     }
 }

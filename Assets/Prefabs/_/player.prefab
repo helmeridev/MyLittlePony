@@ -591,6 +591,7 @@ GameObject:
   - component: {fileID: 6335020954731664099}
   - component: {fileID: 1222913724630980748}
   - component: {fileID: 2369678949976898630}
+  - component: {fileID: 5576901386412036067}
   - component: {fileID: 951169041619686102}
   m_Layer: 6
   m_Name: player
@@ -725,6 +726,19 @@ MonoBehaviour:
   dialogueUI: {fileID: 0}
   dialogueText: {fileID: 0}
   moneyText: {fileID: 0}
+--- !u!114 &5576901386412036067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4895773391094527663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c78bf2ff62aec654ca9006896f4b4c14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 100
 --- !u!95 &951169041619686102
 Animator:
   serializedVersion: 5

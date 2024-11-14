@@ -7,6 +7,7 @@ public class TaxManager : MonoBehaviour
 {
     TaxDoor taxDoor;
     Gambling gambling;
+    public static float staticMoney;
     public float money;
 
     [SerializeField] GameObject dialogueUI;
@@ -14,8 +15,14 @@ public class TaxManager : MonoBehaviour
 
     [SerializeField] TMP_Text moneyText;
 
+    void Start() {
+        money = staticMoney;
+    }
+
     void Update()
     {
+        if(staticMoney != money) staticMoney = money;
+
         if (taxDoor)
         {
             taxDoor.GUI(dialogueUI, dialogueText, this, dialogueUI);
