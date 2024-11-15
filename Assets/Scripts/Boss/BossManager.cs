@@ -25,6 +25,7 @@ public class BossManager : MonoBehaviour
     public float maxHealth;
     [HideInInspector] public float currentHealth;
     [SerializeField] float leaveSpeed;
+    bool isdeathanim;
 
     [HideInInspector] public bool isAttacking;
 
@@ -44,6 +45,7 @@ public class BossManager : MonoBehaviour
 
     void Update() {
         BossLeave();
+        BossDeath();
     }
 
     void BossLeave() {
@@ -56,4 +58,13 @@ public class BossManager : MonoBehaviour
             }
         }
     }
+
+    void BossDeath()
+    {
+        if (currentHealth <= 0 && !isdeathanim) {
+            animator.Play("BossDeathAnim");
+            isdeathanim = true;
+        }
+    }
+
 }
