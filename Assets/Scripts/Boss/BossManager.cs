@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Callbacks;
 using UnityEngine;
 
 public class BossManager : MonoBehaviour
@@ -23,6 +24,7 @@ public class BossManager : MonoBehaviour
     [Header("Properties")]
     public float maxHealth;
     [HideInInspector] public float currentHealth;
+    [SerializeField] float leaveSpeed;
 
     [HideInInspector] public bool isAttacking;
 
@@ -38,5 +40,20 @@ public class BossManager : MonoBehaviour
         taxManager = player.gameObject.GetComponent<TaxManager>();
         animator = GetComponent<Animator>();
         currentHealth = maxHealth;
+    }
+
+    void Update() {
+        BossLeave();
+    }
+
+    void BossLeave() {
+        if(taxManager.money <= 0) {
+            if(transform.position.y > 40) {
+                currentHealth = 0;
+            }
+            else {
+                transform.position += new Vector3(0, leaveSpeed, 0) * Time.deltaTime;
+            }
+        }
     }
 }
