@@ -130,6 +130,24 @@ public class Gambling : MonoBehaviour
             startedSpin = true;
         }
     }
+    public void BetMax() {
+        if(wheelMode == WheelMode.idle) {
+            moneyInputField.text = (tax.money - 0.001f).ToString("0.00");
+            GrabInputField();
+        }
+    }
+    public void BetHalf() {
+        if(wheelMode == WheelMode.idle) {
+            moneyInputField.text = (tax.money / 2).ToString("0.00");
+            GrabInputField();
+        }
+    }
+    public void BetFourth() {
+        if(wheelMode == WheelMode.idle) {
+            moneyInputField.text = (tax.money / 4).ToString("0.00");
+            GrabInputField();
+        }
+    }
 
     //Wheel logic, which prize was hit and how much reward etc
     void WheelLogic() {
