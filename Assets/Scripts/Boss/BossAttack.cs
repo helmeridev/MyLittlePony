@@ -9,6 +9,7 @@ public class BossAttack : MonoBehaviour
     [SerializeField] Vector2 damage;
     [SerializeField] float attackTime;
     private float remainingAttackTime;
+    [SerializeField] GameObject damageTextPrefab;
 
     void Start() {
         manager = GetComponent<BossManager>();
@@ -34,10 +35,18 @@ public class BossAttack : MonoBehaviour
         manager.animator.Play("BossAttack1");
     }
 
+    void SpawnDamageText(float newDamage, Transform spawnPos) {
+        GameObject newDamageText = Instantiate(damageTextPrefab, spawnPos.position, damageTextPrefab.transform.rotation);
+        DamageText damageText = newDamageText.GetComponent<DamageText>();
+        damageText.damageAmount = newDamage;
+    }
+
     public void DealDamage() {
         if(manager.GetPointCollider(manager.armLeft).IsColliding() ||
            manager.GetPointCollider(manager.armRight).IsColliding()) {
-            manager.taxManager.money -= Random.Range(damage.x, damage.y);
+            float newDamage = Random.Range(damage.x, damage.y);
+            manager.taxManager.money -= newDamage;
+            SpawnDamageText(newDamage, manager.player);
         }
     }
 

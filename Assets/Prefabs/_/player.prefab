@@ -739,6 +739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 100
+  damageTextPrefab: {fileID: 4575616200342112041, guid: 2ca45a2e427642542879c5bbd3a1f122, type: 3}
 --- !u!95 &951169041619686102
 Animator:
   serializedVersion: 5

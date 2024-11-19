@@ -16,6 +16,10 @@ public class TaxManager : MonoBehaviour
     [SerializeField] TMP_Text moneyText;
 
     void Start() {
+        //FOR DEVELOPMENT PURPOSES
+        staticMoney = 25;
+        //
+        
         money = staticMoney;
     }
 
