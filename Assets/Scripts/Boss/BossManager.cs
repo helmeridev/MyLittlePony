@@ -23,6 +23,7 @@ public class BossManager : MonoBehaviour
     public GameObject finishDoor;
     [SerializeField] GameObject bossBar;
     [SerializeField] Slider bossBarSlider;
+    [SerializeField] ParticleSystem leaveParticles;
 
     [Header("Properties")]
     public float maxHealth;
@@ -67,6 +68,10 @@ public class BossManager : MonoBehaviour
 
     void BossLeave() {
         if(taxManager.money <= 0) {
+            if(!leaveParticles.isPlaying) {
+                bossBar.SetActive(false);leaveParticles.Play();
+            }
+
             if(transform.position.y > 40) {
                 currentHealth = 0;
             }
