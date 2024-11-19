@@ -70,11 +70,16 @@ public class Gambling : MonoBehaviour
             string input = moneyInputField.text;
 
             if(float.TryParse(input, out float newInput)) {
-                moneyInput = newInput;
+                GetMoneyInput(newInput);
             }
             else {
                 Debug.LogError("Invalid input, please enter a number");
             }
+        }
+    }
+    public void GetMoneyInput(float newInput) {
+        if(wheelMode == WheelMode.idle) {
+            moneyInput = newInput;
         }
     }
 
@@ -119,12 +124,12 @@ public class Gambling : MonoBehaviour
 
     //Method for wheel spin
     public void WheelSpin() {
-        if(tax.money >= moneyInput && moneyInput > 0 && wheelMode == WheelMode.idle && startedSpin == false) {          
+        if(tax.money >= moneyInput && moneyInput > 0 && wheelMode == WheelMode.idle && startedSpin == false) {
             Debug.Log("Started spin");
 
             UIManager.CloseGUI(gambleUI);
 
-            tax.money -= moneyInput;
+            tax.AddMoney(-moneyInput);
             wheelMode = WheelMode.spinning;
             wheelRB.AddTorque(Random.Range(spinSpeed.x, spinSpeed.y), ForceMode2D.Impulse);
             startedSpin = true;
@@ -132,8 +137,8 @@ public class Gambling : MonoBehaviour
     }
     public void BetMax() {
         if(wheelMode == WheelMode.idle) {
-            moneyInputField.text = (tax.money - 0.001f).ToString("0.00");
-            GrabInputField();
+            moneyInputField.text = tax.money.ToString("0.00");
+            GetMoneyInput(tax.money);
         }
     }
     public void BetHalf() {
@@ -161,7 +166,7 @@ public class Gambling : MonoBehaviour
             else if(wheelMode == WheelMode.reward) {
                 if(DidHit(wheelAngle, prize.startAngle, prize.endAngle)) {
                     winMultiplier = prize._winMultiplier;
-                    tax.money += moneyInput * winMultiplier;
+                    tax.AddMoney(moneyInput * winMultiplier);
                     UpdateHistory(winMultiplier);
                     Debug.Log("Hit");
                     startedSpin = false;
