@@ -934,6 +934,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4743908803371716227}
+  - component: {fileID: 7957730930436987338}
   m_Layer: 5
   m_Name: Gambling UI
   m_TagString: Untagged
@@ -965,6 +966,27 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7957730930436987338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3718352614277314074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54e19018e15d25741ab90490aeeb8906, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  historyPos:
+  - {fileID: 277713327127487223}
+  - {fileID: 3837387936859617282}
+  - {fileID: 9071173497587207530}
+  - {fileID: 6348995548136545124}
+  - {fileID: 5499022015987957174}
+  - {fileID: 2282785114111800505}
+  - {fileID: 578264917984665188}
+  - {fileID: 8437339358842841929}
 --- !u!1 &3802714070066284677
 GameObject:
   m_ObjectHideFlags: 0

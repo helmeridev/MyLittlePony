@@ -8,14 +8,15 @@ using UnityEngine.UI;
 public class Gambling : MonoBehaviour
 {
     TaxManager tax;
+    GamblingUI ui;
+    Rigidbody2D wheelRB;
 
     [Header("References")]
-    [SerializeField] Rigidbody2D wheel;
+    [SerializeField] GameObject wheel;
     public GameObject gambleUI;
     public TMP_InputField moneyInputField;
     [SerializeField] List<GameObject> historyObjects = new List<GameObject>();
     [SerializeField] List<GameObject> historyList = new List<GameObject>();
-    [SerializeField] List<Transform> historyPos = new List<Transform>();
 
     [Header("Properties")]
     [SerializeField] Vector2 spinSpeed;
@@ -43,8 +44,13 @@ public class Gambling : MonoBehaviour
     public WheelMode wheelMode;
 
 
+    void Start() {
+        ui = gambleUI.GetComponent<GamblingUI>();
+        wheelRB = wheel.GetComponentInChildren<Rigidbody2D>();
+    }
+
     void Update() {
-        wheelAngle = wheel.transform.eulerAngles.z;
+        wheelAngle = wheelRB.transform.eulerAngles.z;
 
         WheelLogic();
     }
@@ -82,7 +88,7 @@ public class Gambling : MonoBehaviour
 
                 if(i < historyList.Count - 1) {
                     historyList[i + 1] = historyList[i];
-                    historyList[i + 1].transform.position = historyPos[i + 1].position;
+                    historyList[i + 1].transform.position = ui.historyPos[i + 1].position;
 
                     if(i == 0) {
                         SetHistory(prizeAmount, i);
@@ -98,16 +104,16 @@ public class Gambling : MonoBehaviour
     }
     void SetHistory(float prizeAmount, int loopNumber) {
         if(prizeAmount == 0) {
-            historyList[loopNumber] = Instantiate(historyObjects[0], historyPos[0].position, historyObjects[0].transform.rotation, gambleUI.transform);
+            historyList[loopNumber] = Instantiate(historyObjects[0], ui.historyPos[0].position, historyObjects[0].transform.rotation, gambleUI.transform);
         }
         else if(prizeAmount == 2) {
-            historyList[loopNumber] = Instantiate(historyObjects[1], historyPos[0].position, historyObjects[1].transform.rotation, gambleUI.transform);
+            historyList[loopNumber] = Instantiate(historyObjects[1], ui.historyPos[0].position, historyObjects[1].transform.rotation, gambleUI.transform);
         }
         else if(prizeAmount == 3) {
-            historyList[loopNumber] = Instantiate(historyObjects[2], historyPos[0].position, historyObjects[2].transform.rotation, gambleUI.transform);
+            historyList[loopNumber] = Instantiate(historyObjects[2], ui.historyPos[0].position, historyObjects[2].transform.rotation, gambleUI.transform);
         }
         else if(prizeAmount == 7) {
-            historyList[loopNumber] = Instantiate(historyObjects[3], historyPos[0].position, historyObjects[3].transform.rotation, gambleUI.transform);
+            historyList[loopNumber] = Instantiate(historyObjects[3], ui.historyPos[0].position, historyObjects[3].transform.rotation, gambleUI.transform);
         }
     }
 
@@ -120,7 +126,7 @@ public class Gambling : MonoBehaviour
 
             tax.money -= moneyInput;
             wheelMode = WheelMode.spinning;
-            wheel.AddTorque(Random.Range(spinSpeed.x, spinSpeed.y), ForceMode2D.Impulse);
+            wheelRB.AddTorque(Random.Range(spinSpeed.x, spinSpeed.y), ForceMode2D.Impulse);
             startedSpin = true;
         }
     }
@@ -129,8 +135,8 @@ public class Gambling : MonoBehaviour
     void WheelLogic() {
         foreach(Prize prize in prizes) {
             if(wheelMode == WheelMode.spinning) {
-                if(wheel.angularVelocity < stopVelocityLimit && startedSpin == true) {
-                    wheel.angularVelocity = 0;
+                if(wheelRB.angularVelocity < stopVelocityLimit && startedSpin == true) {
+                    wheelRB.angularVelocity = 0;
                     wheelMode = WheelMode.reward;
                 }
             }

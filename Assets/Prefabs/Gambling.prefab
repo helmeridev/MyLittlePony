@@ -261,9 +261,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 036c287286c111f4c8887645f5953036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wheel: {fileID: 7264404230644748936}
+  wheel: {fileID: 6168985576054648446}
   gambleUI: {fileID: 0}
   moneyInputField: {fileID: 0}
+  historyObjects:
+  - {fileID: 297382148663837479, guid: 11d6fa2d960126a45b4f8d8a106f3225, type: 3}
+  - {fileID: 493033213452475434, guid: 59cfb8c51219d3147925adfdef67631c, type: 3}
+  - {fileID: 6758208114363858508, guid: 6a2375e038dec704f9543d62c9c639c1, type: 3}
+  - {fileID: 7253336392437121020, guid: 2b64ab398e0b05548a21cbd0e2c8735a, type: 3}
+  historyList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   spinSpeed: {x: 10, y: 25}
   stopVelocityLimit: 30
   prizes:
