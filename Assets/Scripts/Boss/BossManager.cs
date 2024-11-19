@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Callbacks;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossManager : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class BossManager : MonoBehaviour
     public GameObject attackCollider;
     [HideInInspector] public Animator animator;
     public GameObject finishDoor;
+    [SerializeField] GameObject bossBar;
+    [SerializeField] Slider bossBarSlider;
 
     [Header("Properties")]
     public float maxHealth;
@@ -28,6 +31,7 @@ public class BossManager : MonoBehaviour
     bool isdeathanim;
 
     [HideInInspector] public bool isAttacking;
+    private float bossBarAfter0Timer = 2;
 
     public PointCollider GetPointCollider(GameObject colliderObject) {
         if(colliderObject.GetComponent<PointCollider>()) return colliderObject.GetComponent<PointCollider>();
@@ -46,6 +50,19 @@ public class BossManager : MonoBehaviour
     void Update() {
         BossLeave();
         BossDeath();
+        BossBarUpdate();
+    }
+
+    void BossBarUpdate() {
+        if(currentHealth <= 0) {
+            bossBarAfter0Timer -= Time.deltaTime;
+
+            if(bossBarAfter0Timer <= 0) {
+                bossBar.SetActive(false);
+            }
+        }
+
+        bossBarSlider.value = currentHealth / maxHealth;
     }
 
     void BossLeave() {
