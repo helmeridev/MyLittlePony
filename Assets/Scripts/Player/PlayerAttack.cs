@@ -10,14 +10,21 @@ public class PlayerAttack : MonoBehaviour
     bool canAttack;
     Transform bossPos;
     [SerializeField] GameObject damageTextPrefab;
+    [SerializeField] float attackCooldown = 1;
+    private float remainingCooldown;
 
     void Update() {
-        if(Input.GetMouseButtonDown(0) && canAttack) {
+        if(remainingCooldown > 0) {
+            remainingCooldown -= Time.deltaTime;
+        }
+
+        if(Input.GetMouseButtonDown(0) && canAttack && remainingCooldown <= 0) {
             Attack();
         }
     }
 
     void Attack() {
+        remainingCooldown = attackCooldown;
         bossManager.currentHealth -= damage;
         SpawnDamageText(damage, bossPos);
     }
