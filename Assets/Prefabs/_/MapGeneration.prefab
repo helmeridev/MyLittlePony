@@ -45,13 +45,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8906511a9c4412d4cacff8b4a16d69bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfChunks: 3
+  numberOfChunks: 4
   lastGroundChunk: {fileID: 0}
   groundChunks:
   - {fileID: 3069689423574387755, guid: 0b7294d6fc9d69e4e8391d161e060087, type: 3}
   housePrefab:
   - {fileID: 177809697748041925, guid: 673e8df8b7531d643ab6bfdef5126af4, type: 3}
-  bobHouse: {fileID: 177809697748041925, guid: ffd559071eb743149be9c825e577cb9d, type: 3}
+  specialHousePrefab:
+  - {fileID: 177809697748041925, guid: ffd559071eb743149be9c825e577cb9d, type: 3}
   groundChunkStartPos: {fileID: 2631916696803417141}
   nextChunkPos: {fileID: 0}
   gamblingUI: {fileID: 0}

@@ -74,7 +74,7 @@ public class BossManager : MonoBehaviour
                 bossBar.SetActive(false);leaveParticles.Play();
             }
 
-            if(transform.position.y > 40) {
+            if(transform.position.y > 30) {
                 currentHealth = 0;
             }
             else {
@@ -85,7 +85,7 @@ public class BossManager : MonoBehaviour
 
     void BossDeath()
     {
-        if (currentHealth <= 0 && !isdeathanim && transform.position.y < 30) {
+        if (currentHealth <= 0 && !isdeathanim && transform.position.y < 20) {
             animator.Play("BossDeathAnim");
             MoneySpread();
             isdeathanim = true;
