@@ -694,9 +694,11 @@ MonoBehaviour:
   bossBar: {fileID: 0}
   bossBarSlider: {fileID: 0}
   leaveParticles: {fileID: 7684522001296069259}
+  MoneyPickupPrefab: {fileID: 9200153813463337262, guid: 302b8e5dfd844f84588bd30e87a4beb9, type: 3}
   maxHealth: 1000
   currentHealth: 0
   leaveSpeed: 4
+  defeatMoneyAmount: 10
   isAttacking: 0
 --- !u!114 &6912162158744624960
 MonoBehaviour:

@@ -24,12 +24,14 @@ public class BossManager : MonoBehaviour
     [SerializeField] GameObject bossBar;
     [SerializeField] Slider bossBarSlider;
     [SerializeField] ParticleSystem leaveParticles;
+    [SerializeField] GameObject MoneyPickupPrefab;
 
     [Header("Properties")]
     public float maxHealth;
     [HideInInspector] public float currentHealth;
     [SerializeField] float leaveSpeed;
     bool isdeathanim;
+    [SerializeField] float defeatMoneyAmount;
 
     [HideInInspector] public bool isAttacking;
     private float bossBarAfter0Timer = 2;
@@ -83,9 +85,19 @@ public class BossManager : MonoBehaviour
 
     void BossDeath()
     {
-        if (currentHealth <= 0 && !isdeathanim) {
+        if (currentHealth <= 0 && !isdeathanim && transform.position.y < 30) {
             animator.Play("BossDeathAnim");
+            MoneySpread();
             isdeathanim = true;
+        }
+    }
+    void MoneySpread() {
+        for(int i = 0; i <= defeatMoneyAmount; i++) {
+            GameObject newMoneyPickup = Instantiate(MoneyPickupPrefab, transform.position, MoneyPickupPrefab.transform.rotation);
+            Rigidbody2D moneyRB = newMoneyPickup.GetComponent<Rigidbody2D>();
+
+            Vector2 randomForce = new Vector2(Random.Range(-4, 4), Random.Range(4, 9));
+            moneyRB.AddForce(randomForce, ForceMode2D.Impulse);
         }
     }
 
