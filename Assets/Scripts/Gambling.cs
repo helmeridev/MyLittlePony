@@ -9,9 +9,13 @@ public class Gambling : MonoBehaviour
 {
     TaxManager tax;
 
+    [Header("References")]
     [SerializeField] Rigidbody2D wheel;
     public GameObject gambleUI;
     public TMP_InputField moneyInputField;
+    [SerializeField] List<GameObject> historyObjects = new List<GameObject>();
+    [SerializeField] List<GameObject> historyList = new List<GameObject>();
+    [SerializeField] List<Transform> historyPos = new List<Transform>();
 
     [Header("Properties")]
     [SerializeField] Vector2 spinSpeed;
@@ -68,6 +72,45 @@ public class Gambling : MonoBehaviour
         }
     }
 
+    void UpdateHistory(float prizeAmount) {
+        for(int i = historyList.Count - 1; i >= 0; i--) {
+            if(historyList[i] != null) {
+                if(i == historyList.Count - 1) {
+                    Destroy(historyList[i]);
+                    historyList[i] = null;
+                }
+
+                if(i < historyList.Count - 1) {
+                    historyList[i + 1] = historyList[i];
+                    historyList[i + 1].transform.position = historyPos[i + 1].position;
+
+                    if(i == 0) {
+                        SetHistory(prizeAmount, i);
+                    }
+                }
+            }
+            else {
+                if(i == 0) {
+                    SetHistory(prizeAmount, i);
+                }
+            }
+        }
+    }
+    void SetHistory(float prizeAmount, int loopNumber) {
+        if(prizeAmount == 0) {
+            historyList[loopNumber] = Instantiate(historyObjects[0], historyPos[0].position, historyObjects[0].transform.rotation, gambleUI.transform);
+        }
+        else if(prizeAmount == 2) {
+            historyList[loopNumber] = Instantiate(historyObjects[1], historyPos[0].position, historyObjects[1].transform.rotation, gambleUI.transform);
+        }
+        else if(prizeAmount == 3) {
+            historyList[loopNumber] = Instantiate(historyObjects[2], historyPos[0].position, historyObjects[2].transform.rotation, gambleUI.transform);
+        }
+        else if(prizeAmount == 7) {
+            historyList[loopNumber] = Instantiate(historyObjects[3], historyPos[0].position, historyObjects[3].transform.rotation, gambleUI.transform);
+        }
+    }
+
     //Method for wheel spin
     public void WheelSpin() {
         if(tax.money >= moneyInput && moneyInput > 0 && wheelMode == WheelMode.idle && startedSpin == false) {          
@@ -95,6 +138,7 @@ public class Gambling : MonoBehaviour
                 if(DidHit(wheelAngle, prize.startAngle, prize.endAngle)) {
                     winMultiplier = prize._winMultiplier;
                     tax.money += moneyInput * winMultiplier;
+                    UpdateHistory(winMultiplier);
                     Debug.Log("Hit");
                     startedSpin = false;
                     wheelMode = WheelMode.idle;
