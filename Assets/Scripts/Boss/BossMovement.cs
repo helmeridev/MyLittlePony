@@ -40,6 +40,8 @@ public class BossMovement : MonoBehaviour
             else {
                 rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
             }
+
+            manager.animator.Play("BossWalk");
         }
         else {
             rb.velocity = new Vector2(0, rb.velocity.y);
