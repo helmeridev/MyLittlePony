@@ -133,8 +133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae067ead310c3dd42b35392299400927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleSpeed: 9
-  scaleTime: 4
+  scaleSpeed: 12
+  scaleTime: 2.5
   attackSpeed: 0
   attackDamage: 0
   tax: {fileID: 0}

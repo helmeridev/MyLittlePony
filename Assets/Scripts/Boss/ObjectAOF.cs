@@ -21,6 +21,7 @@ public class ObjectAOF : MonoBehaviour
     void Update() {
         transform.localScale += new Vector3(scaleSpeed, scaleSpeed, 0) * Time.deltaTime;
 
+        scaleSpeed -= scaleSpeed * Time.deltaTime / 4;
         scaleTime -= Time.deltaTime;
         if(scaleTime <= 0) {
             Destroy(gameObject);
