@@ -92,7 +92,8 @@ public class BossManager : MonoBehaviour
     }
     void MoneySpread() {
         for(int i = 0; i <= defeatMoneyAmount; i++) {
-            GameObject newMoneyPickup = Instantiate(MoneyPickupPrefab, transform.position, MoneyPickupPrefab.transform.rotation);
+            Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
+            GameObject newMoneyPickup = Instantiate(MoneyPickupPrefab, spawnPos, MoneyPickupPrefab.transform.rotation);
             Rigidbody2D moneyRB = newMoneyPickup.GetComponent<Rigidbody2D>();
 
             Vector2 randomForce = new Vector2(Random.Range(-4, 4), Random.Range(4, 9));

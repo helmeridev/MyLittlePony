@@ -101,7 +101,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 959
+    m_Bits: 4031
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -402,7 +402,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 959
+    m_Bits: 4031
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -637,7 +637,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 959
+    m_Bits: 4031
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -725,9 +725,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f10e056f2b304a74596f176bbeab1325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: {x: 5, y: 11}
-  attackTime: 3
+  damage1: {x: 5, y: 12}
+  attackTime1: 3
+  damage2: 3
+  attackTime2: 1
   damageTextPrefab: {fileID: 4575616200342112041, guid: 2ca45a2e427642542879c5bbd3a1f122, type: 3}
+  aofAttackPrefab: {fileID: 714058772079263641, guid: d90aa72961c4b2340b488d6ea2295f2e, type: 3}
+  attacksBeforeAOF: 2
 --- !u!95 &3702969564745988800
 Animator:
   serializedVersion: 5
@@ -5720,7 +5724,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 959
+    m_Bits: 4031
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
