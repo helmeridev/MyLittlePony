@@ -31,7 +31,9 @@ public class BossManager : MonoBehaviour
     [SerializeField] float leaveSpeed;
     bool isdeathanim;
     [SerializeField] float defeatMoneyAmount;
+    [SerializeField] float activationDistance = 8f;
 
+    [HideInInspector] public bool isActive;
     [HideInInspector] public bool isAttacking;
     private float bossBarAfter0Timer = 2;
 
@@ -50,7 +52,15 @@ public class BossManager : MonoBehaviour
     }
 
     void Update() {
-        BossLeave();
+        if( Vector2.Distance(transform.position, player.position) < activationDistance && 
+            currentHealth > 0) {
+                isActive = true;
+            }
+
+        if(isActive) {
+            BossLeave();
+        }
+        
         BossDeath();
         BossBarUpdate();
     }

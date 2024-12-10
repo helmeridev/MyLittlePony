@@ -16,18 +16,20 @@ public class BossMovement : MonoBehaviour
     }
 
     void Update() {
-        if(manager.currentHealth > 0) {
-            if(!manager.isAttacking) {
-                Move();
-                Flip();
+        if(manager.isActive) {
+            if(manager.currentHealth > 0) {
+                if(!manager.isAttacking) {
+                    Move();
+                    Flip();
+                }
+                else {
+                    rb.velocity = new Vector2(0, rb.velocity.y);
+                }
             }
             else {
                 rb.velocity = new Vector2(0, rb.velocity.y);
+                manager.finishDoor.SetActive(false);
             }
-        }
-        else {
-            rb.velocity = new Vector2(0, rb.velocity.y);
-            manager.finishDoor.SetActive(false);
         }
     }
     

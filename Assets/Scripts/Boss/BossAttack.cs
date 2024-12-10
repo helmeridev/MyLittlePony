@@ -21,10 +21,12 @@ public class BossAttack : MonoBehaviour
     }
 
     void Update() {
-        if(remainingAttackTime > 0) remainingAttackTime -= Time.deltaTime;
+        if(manager.isActive) {
+            if(remainingAttackTime > 0) remainingAttackTime -= Time.deltaTime;
 
-        AttackLogic();
-        ReturnIsAttacking();
+            AttackLogic();
+            ReturnIsAttacking();
+        }
     }
 
     void AttackLogic() {

@@ -5233,6 +5233,8 @@ MonoBehaviour:
   currentHealth: 0
   leaveSpeed: 4
   defeatMoneyAmount: 10
+  activationDistance: 8
+  isActive: 0
   isAttacking: 0
 --- !u!114 &2196856912498605206
 MonoBehaviour:
