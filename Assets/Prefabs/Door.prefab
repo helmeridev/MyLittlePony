@@ -32,7 +32,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.8, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6593885694788391338}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6477776984891699044
@@ -146,12 +147,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cash: 0
   cashRange: {x: 1, y: 8}
+  cashParticles: {fileID: 4838361448659796879}
   dialogue:
   - Hello?
   - Is it tax time?
   - Alright here you go..
+  robDialogue: []
+  afterDialogue: You already took my money.
   diaNumber: 0
   didCollect: 0
+  isSpecial: 0
   cAnimator: {fileID: 5849625013135220732}
 --- !u!95 &5849625013135220732
 Animator:
@@ -174,3 +179,70 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1001 &5689626630515612702
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5894520297517603887}
+    m_Modifications:
+    - target: {fileID: 1546895611819199924, guid: a26e46169e659264c9aa0cc8c7b56aa3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546895611819199924, guid: a26e46169e659264c9aa0cc8c7b56aa3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546895611819199924, guid: a26e46169e659264c9aa0cc8c7b56aa3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546895611819199924, guid: a26e46169e659264c9aa0cc8c7b56aa3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546895611819199924, guid: a26e46169e659264c9aa0cc8c7b56aa3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546895611819199924, guid: a26e46169e659264c9aa0cc8c7b56aa3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546895611819199924, guid: a26e46169e659264c9aa0cc8c7b56aa3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546895611819199924, guid: a26e46169e659264c9aa0cc8c7b56aa3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546895611819199924, guid: a26e46169e659264c9aa0cc8c7b56aa3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546895611819199924, guid: a26e46169e659264c9aa0cc8c7b56aa3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8075328408479397760, guid: a26e46169e659264c9aa0cc8c7b56aa3, type: 3}
+      propertyPath: m_Name
+      value: MoneyParticles
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a26e46169e659264c9aa0cc8c7b56aa3, type: 3}
+--- !u!198 &4838361448659796879 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 995521316330381201, guid: a26e46169e659264c9aa0cc8c7b56aa3, type: 3}
+  m_PrefabInstance: {fileID: 5689626630515612702}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6593885694788391338 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1546895611819199924, guid: a26e46169e659264c9aa0cc8c7b56aa3, type: 3}
+  m_PrefabInstance: {fileID: 5689626630515612702}
+  m_PrefabAsset: {fileID: 0}

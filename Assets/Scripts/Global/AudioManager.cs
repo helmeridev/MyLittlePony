@@ -9,11 +9,9 @@ public class AudioManager : MonoBehaviour
 
     public AudioRec[] audios;
 
-    void Start() {
-        instance = this;
-    }
-
     void Awake() {
+        instance = this;
+
         foreach(AudioRec audio in audios) {
             audio.source = gameObject.AddComponent<AudioSource>();
 

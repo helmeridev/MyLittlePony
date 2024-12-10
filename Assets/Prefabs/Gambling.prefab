@@ -202,6 +202,7 @@ Transform:
   - {fileID: 4740287270629203145}
   - {fileID: 8880680390589623671}
   - {fileID: 5922128901384727010}
+  - {fileID: 6444550390019340145}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &5492458645502398198
@@ -261,6 +262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 036c287286c111f4c8887645f5953036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cashParticles: {fileID: 4740254590759249236}
   wheel: {fileID: 6168985576054648446}
   gambleUI: {fileID: 0}
   moneyInputField: {fileID: 0}
@@ -477,3 +479,70 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1001 &5483142663809874629
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6837625398503986171}
+    m_Modifications:
+    - target: {fileID: 1546895611819199924, guid: a26e46169e659264c9aa0cc8c7b56aa3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546895611819199924, guid: a26e46169e659264c9aa0cc8c7b56aa3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546895611819199924, guid: a26e46169e659264c9aa0cc8c7b56aa3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546895611819199924, guid: a26e46169e659264c9aa0cc8c7b56aa3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546895611819199924, guid: a26e46169e659264c9aa0cc8c7b56aa3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546895611819199924, guid: a26e46169e659264c9aa0cc8c7b56aa3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546895611819199924, guid: a26e46169e659264c9aa0cc8c7b56aa3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546895611819199924, guid: a26e46169e659264c9aa0cc8c7b56aa3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546895611819199924, guid: a26e46169e659264c9aa0cc8c7b56aa3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546895611819199924, guid: a26e46169e659264c9aa0cc8c7b56aa3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8075328408479397760, guid: a26e46169e659264c9aa0cc8c7b56aa3, type: 3}
+      propertyPath: m_Name
+      value: MoneyParticles
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a26e46169e659264c9aa0cc8c7b56aa3, type: 3}
+--- !u!198 &4740254590759249236 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 995521316330381201, guid: a26e46169e659264c9aa0cc8c7b56aa3, type: 3}
+  m_PrefabInstance: {fileID: 5483142663809874629}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6444550390019340145 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1546895611819199924, guid: a26e46169e659264c9aa0cc8c7b56aa3, type: 3}
+  m_PrefabInstance: {fileID: 5483142663809874629}
+  m_PrefabAsset: {fileID: 0}

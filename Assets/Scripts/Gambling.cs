@@ -12,6 +12,7 @@ public class Gambling : MonoBehaviour
     Rigidbody2D wheelRB;
 
     [Header("References")]
+    [SerializeField] ParticleSystem cashParticles;
     [SerializeField] GameObject wheel;
     public GameObject gambleUI;
     public TMP_InputField moneyInputField;
@@ -167,8 +168,8 @@ public class Gambling : MonoBehaviour
                 if(DidHit(wheelAngle, prize.startAngle, prize.endAngle)) {
                     winMultiplier = prize._winMultiplier;
                     tax.AddMoney(moneyInput * winMultiplier);
+                    if(winMultiplier > 1) cashParticles.Play();
                     UpdateHistory(winMultiplier);
-                    Debug.Log("Hit");
                     startedSpin = false;
                     wheelMode = WheelMode.idle;
                 }

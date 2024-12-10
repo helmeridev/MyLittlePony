@@ -7,6 +7,7 @@ public class TaxDoor : MonoBehaviour
 {
     public float cash;
     [SerializeField] Vector2 cashRange = new Vector2(1, 8);
+    [SerializeField] ParticleSystem cashParticles;
 
     [Header("Dialogue")]
     public List<string> dialogue = new List<string>();
@@ -42,7 +43,10 @@ public class TaxDoor : MonoBehaviour
             if(diaNumber > dialogue.Count - 1) {
                 UIManager.CloseGUI(guiObject);
                 diaNumber = 0;
-                if(!didCollect) tax.AddMoney(cash);
+                if(!didCollect) {
+                    tax.AddMoney(cash);
+                    cashParticles.Play();
+                }
                 didCollect = true;
             }
         }
