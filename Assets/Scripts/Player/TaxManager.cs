@@ -19,7 +19,7 @@ public class TaxManager : MonoBehaviour
     void Start() {
         //FOR DEVELOPMENT PURPOSES
         // staticMoney = 999;
-        //
+        
         
         money = staticMoney;
     }

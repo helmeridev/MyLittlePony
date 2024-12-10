@@ -94,6 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggerEvent: 0
   planktonIndex: 2
+  finalCutsceneIndex: 3
 --- !u!1 &5773016288077543791
 GameObject:
   m_ObjectHideFlags: 0
