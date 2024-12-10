@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RandomEventManager : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class RandomEventManager : MonoBehaviour
     public GameObject rpsWinUI;
     public GameObject rpsLoseUI;
     public GameObject rpsDrawUI;
+    public GameObject rpsResultFeedback;
+    public Image winResultSpriteAI;
+    public Image winResultSpritePlayer;
+    public Slider rpsTimerSlider;
     private float activateTreshold = 50;
     private float currentDistance;
     bool isEventReady;

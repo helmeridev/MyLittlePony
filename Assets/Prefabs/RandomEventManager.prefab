@@ -51,6 +51,12 @@ MonoBehaviour:
   player: {fileID: 0}
   activateTresholds: {x: 20, y: 30}
   rpsUI: {fileID: 0}
+  rpsWinUI: {fileID: 0}
+  rpsLoseUI: {fileID: 0}
+  rpsDrawUI: {fileID: 0}
+  winResultSpriteAI: {fileID: 0}
+  winResultSpritePlayer: {fileID: 0}
+  rpsTimerSlider: {fileID: 0}
 --- !u!114 &3342598766707483422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,5 +69,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f9f8980fe386a043bb3a8d94d376a99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rockSprite: {fileID: 21300000, guid: 9fb0ecdea690e184b806764faa35f47f, type: 3}
+  paperSprite: {fileID: 21300000, guid: 3f68cea142781bd489d90b8cb36e53a3, type: 3}
+  scissorsSprite: {fileID: 21300000, guid: 0cdd5ebb4468e184796c5f41ca94ec79, type: 3}
+  taxManager: {fileID: 0}
   gameloop: 0
   maxTime: 5
+  remainingTime: 0

@@ -6,14 +6,18 @@ using UnityEngine;
 
 public class RPS : MonoBehaviour
 {
+    [SerializeField] Sprite rockSprite;
+    [SerializeField] Sprite paperSprite;
+    [SerializeField] Sprite scissorsSprite;
+
     [SerializeField] TaxManager taxManager;
     RandomEventManager eventManager;
     public bool gameloop = false;
     int rpsPlayer = 0;
     int rpsGame = 0;
 
-    [SerializeField] float maxTime = 5;
-    private float remainingTime;
+    public float maxTime = 5;
+    [HideInInspector] public float remainingTime;
 
 
 
@@ -37,6 +41,7 @@ public class RPS : MonoBehaviour
     void RPSgame()
     {
         remainingTime -= Time.deltaTime;
+        eventManager.rpsTimerSlider.value = remainingTime / maxTime;
         if (remainingTime > 0) 
         {
             eventManager.rpsUI.SetActive(true);
@@ -51,18 +56,25 @@ public class RPS : MonoBehaviour
 
                 if (rpsGame == rpsPlayer)
                 {
+                    if(rpsGame == 1) eventManager.winResultSpriteAI.sprite = rockSprite;
+                    if(rpsGame == 2) eventManager.winResultSpriteAI.sprite = paperSprite;
+                    if(rpsGame == 3) eventManager.winResultSpriteAI.sprite = scissorsSprite;
+
                     draw();
                 }
                 else if (rpsPlayer == 1 && rpsGame == 3)
                 {
+                    eventManager.winResultSpriteAI.sprite = scissorsSprite;
                     win();
                 }
                 else if (rpsPlayer == 2 && rpsGame == 1)
                 {
+                    eventManager.winResultSpriteAI.sprite = rockSprite;
                     win();
                 }
                 else if (rpsPlayer == 3 && rpsGame == 2)
                 {
+                    eventManager.winResultSpriteAI.sprite = paperSprite;
                     win();
                 }
                 else
@@ -76,18 +88,21 @@ public class RPS : MonoBehaviour
     public void chooseRock()
     {
         rpsPlayer = 1;
+        eventManager.winResultSpritePlayer.sprite = rockSprite;
         remainingTime = 0;
 
     }
     public void choosePaper()
     {
         rpsPlayer = 2;
+        eventManager.winResultSpritePlayer.sprite = paperSprite;
         remainingTime = 0;
     }
 
     public void chooseScissors()
     {
         rpsPlayer = 3;
+        eventManager.winResultSpritePlayer.sprite = scissorsSprite;
         remainingTime = 0;
     }
 
@@ -99,7 +114,8 @@ public class RPS : MonoBehaviour
 
         eventManager.rpsUI.SetActive(false);
         eventManager.rpsWinUI.SetActive(true);
-        eventManager.rpsWinUI.GetComponentInChildren<TMP_Text>().text = "You gained " + moneyDifference + " money!";
+        eventManager.rpsWinUI.GetComponentInChildren<TMP_Text>().text = "You won and gained " + moneyDifference + " money!";
+        eventManager.rpsResultFeedback.SetActive(true);
         Destroy(eventManager.robberInstance);
         remainingTime = maxTime;
         gameloop = false;
@@ -113,7 +129,8 @@ public class RPS : MonoBehaviour
 
         eventManager.rpsUI.SetActive(false);
         eventManager.rpsLoseUI.SetActive(true);
-        eventManager.rpsLoseUI.GetComponentInChildren<TMP_Text>().text = "You lost " + moneyDifference + " money!";
+        eventManager.rpsLoseUI.GetComponentInChildren<TMP_Text>().text = "You lost! " + moneyDifference + " money!";
+        eventManager.rpsResultFeedback.SetActive(true);
         Destroy(eventManager.robberInstance);
         remainingTime = maxTime;
         gameloop = false;
@@ -122,7 +139,8 @@ public class RPS : MonoBehaviour
     public void draw()
     {
         eventManager.rpsDrawUI.SetActive(true);
-        eventManager.rpsDrawUI.GetComponentInChildren<TMP_Text>().text = "You keep your money!";
+        eventManager.rpsDrawUI.GetComponentInChildren<TMP_Text>().text = "It's a draw! You keep your money!";
+        eventManager.rpsResultFeedback.SetActive(true);
         eventManager.rpsUI.SetActive(false);
         Destroy(eventManager.robberInstance);
         remainingTime = maxTime;
