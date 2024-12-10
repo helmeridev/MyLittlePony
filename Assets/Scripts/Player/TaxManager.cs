@@ -42,8 +42,8 @@ public class TaxManager : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (taxDoor = other.GetComponent<TaxDoor>()) { }
-        if (gambling = other.GetComponent<Gambling>()) { }
+        if (other.GetComponent<TaxDoor>()) taxDoor = other.GetComponent<TaxDoor>();
+        if (other.GetComponent<Gambling>()) gambling = other.GetComponent<Gambling>();
     }
     void OnTriggerExit2D(Collider2D other)
     {
@@ -60,6 +60,7 @@ public class TaxManager : MonoBehaviour
     public void AddMoney(float amount)
     {
         money += amount;
+        if(money < 0) money = 0;
         moneyText.text = money.ToString("0.00");
     }
 }

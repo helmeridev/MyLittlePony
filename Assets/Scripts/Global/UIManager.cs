@@ -25,6 +25,7 @@ public class UIManager : MonoBehaviour
 
     public static bool isPaused = false;
     public static int openGUIs;
+    public static GameObject openGUI;
 
 
     void Start() {
@@ -64,6 +65,7 @@ public class UIManager : MonoBehaviour
     public static void OpenGUI(GameObject gui) {
         if(!gui.activeSelf && CanToggleGUI()) {
             openGUIs += 1;
+            openGUI = gui;
 
             Movement.canMove = false;
             gui.SetActive(true);
@@ -80,6 +82,7 @@ public class UIManager : MonoBehaviour
     public static void CloseGUI(GameObject gui) {
         if(gui.activeSelf) {
             openGUIs -= 1;
+            openGUI = null;
 
             Movement.canMove = true;
             gui.SetActive(false);

@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class RPS : MonoBehaviour
@@ -42,9 +39,9 @@ public class RPS : MonoBehaviour
     {
         remainingTime -= Time.deltaTime;
         eventManager.rpsTimerSlider.value = remainingTime / maxTime;
-        if (remainingTime > 0) 
+        if (remainingTime > 0 && !eventManager.rpsUI.activeSelf) 
         {
-            eventManager.rpsUI.SetActive(true);
+            UIManager.OpenGUI(eventManager.rpsUI);
         }
 
         if (remainingTime < 0)
@@ -54,27 +51,24 @@ public class RPS : MonoBehaviour
                 if (rpsPlayer == 0) { rpsPlayer = (int)(Mathf.Round(Random.Range(1, 4) * 10) * 0.1f); }
                 rpsGame = (int)(Mathf.Round(Random.Range(1, 4) * 10) * 0.1f);
 
+                if(rpsGame == 1) eventManager.winResultSpriteAI.sprite = rockSprite;
+                if(rpsGame == 2) eventManager.winResultSpriteAI.sprite = paperSprite;
+                if(rpsGame == 3) eventManager.winResultSpriteAI.sprite = scissorsSprite;
+
                 if (rpsGame == rpsPlayer)
                 {
-                    if(rpsGame == 1) eventManager.winResultSpriteAI.sprite = rockSprite;
-                    if(rpsGame == 2) eventManager.winResultSpriteAI.sprite = paperSprite;
-                    if(rpsGame == 3) eventManager.winResultSpriteAI.sprite = scissorsSprite;
-
                     draw();
                 }
                 else if (rpsPlayer == 1 && rpsGame == 3)
                 {
-                    eventManager.winResultSpriteAI.sprite = scissorsSprite;
                     win();
                 }
                 else if (rpsPlayer == 2 && rpsGame == 1)
                 {
-                    eventManager.winResultSpriteAI.sprite = rockSprite;
                     win();
                 }
                 else if (rpsPlayer == 3 && rpsGame == 2)
                 {
-                    eventManager.winResultSpriteAI.sprite = paperSprite;
                     win();
                 }
                 else
@@ -112,7 +106,7 @@ public class RPS : MonoBehaviour
         
         taxManager.AddMoney(moneyDifference);
 
-        eventManager.rpsUI.SetActive(false);
+        UIManager.CloseGUI(eventManager.rpsUI);
         eventManager.rpsWinUI.SetActive(true);
         eventManager.rpsWinUI.GetComponentInChildren<TMP_Text>().text = "You won and gained " + moneyDifference + " money!";
         eventManager.rpsResultFeedback.SetActive(true);
@@ -127,7 +121,7 @@ public class RPS : MonoBehaviour
         
         taxManager.AddMoney(moneyDifference);
 
-        eventManager.rpsUI.SetActive(false);
+        UIManager.CloseGUI(eventManager.rpsUI);
         eventManager.rpsLoseUI.SetActive(true);
         eventManager.rpsLoseUI.GetComponentInChildren<TMP_Text>().text = "You lost! " + moneyDifference + " money!";
         eventManager.rpsResultFeedback.SetActive(true);
@@ -141,7 +135,7 @@ public class RPS : MonoBehaviour
         eventManager.rpsDrawUI.SetActive(true);
         eventManager.rpsDrawUI.GetComponentInChildren<TMP_Text>().text = "It's a draw! You keep your money!";
         eventManager.rpsResultFeedback.SetActive(true);
-        eventManager.rpsUI.SetActive(false);
+        UIManager.CloseGUI(eventManager.rpsUI);
         Destroy(eventManager.robberInstance);
         remainingTime = maxTime;
         gameloop = false;

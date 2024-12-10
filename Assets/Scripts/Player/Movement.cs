@@ -25,6 +25,10 @@ public class Movement : MonoBehaviour
     [SerializeField] private LayerMask jumpLayer;
     [SerializeField] private float maxFeetDist;
     void Update() {
+        if(!canMove) {
+            horizontal = 0;
+        }
+
         if(canMove) {
             horizontal = Input.GetAxis("Horizontal");
 
@@ -41,9 +45,11 @@ public class Movement : MonoBehaviour
 
         if(Mathf.Abs(horizontal) > 0) {
             animator.Play("Walking");
+            AudioManager.instance.Play("PlayerWalk");
         }
         else {
             animator.Play("Idle");
+            AudioManager.instance.Stop("PlayerWalk");
         }
 
         Flip();

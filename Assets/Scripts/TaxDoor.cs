@@ -42,7 +42,7 @@ public class TaxDoor : MonoBehaviour
             if(diaNumber > dialogue.Count - 1) {
                 UIManager.CloseGUI(guiObject);
                 diaNumber = 0;
-                if(!didCollect) tax.money += cash;
+                if(!didCollect) tax.AddMoney(cash);
                 didCollect = true;
             }
         }
@@ -50,7 +50,7 @@ public class TaxDoor : MonoBehaviour
             if(diaNumber > robDialogue.Count - 1) {
                 UIManager.CloseGUI(guiObject);
                 diaNumber = 0;
-                if(!didCollect) tax.money -= cash;
+                if(!didCollect) tax.AddMoney(-cash);
                 didCollect = true;
             }
         }

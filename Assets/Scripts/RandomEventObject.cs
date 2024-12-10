@@ -30,6 +30,7 @@ public class RandomEventObject : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) {
         if(other.CompareTag("Player")) {
             Debug.Log("Robber event");
+            if(UIManager.openGUI) UIManager.CloseGUI(UIManager.openGUI);
             rps.gameloop = true;
         }
     }
