@@ -83,8 +83,9 @@ public class BossManager : MonoBehaviour
                 bossBar.SetActive(false);leaveParticles.Play();
             }
 
-            if(transform.position.y > 30) {
+            if(transform.position.y > 15) {
                 currentHealth = 0;
+                finishDoor.SetActive(false);
             }
             else {
                 transform.position += new Vector3(0, leaveSpeed, 0) * Time.deltaTime;
