@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class TaxDoor : MonoBehaviour
@@ -13,6 +14,7 @@ public class TaxDoor : MonoBehaviour
     public List<string> dialogue = new List<string>();
     public List<string> robDialogue = new List<string>();
     public string afterDialogue = "You already took my money.";
+    public Sprite ownerSprite;
     public int diaNumber = 0;
     public bool didCollect;
     public bool isSpecial;
@@ -22,9 +24,10 @@ public class TaxDoor : MonoBehaviour
 
     private int houseFate = -1;
 
-    public void GUI(GameObject guiObject, TMP_Text text, TaxManager tax, GameObject dialogueUI) {
+    public void GUI(GameObject guiObject, TMP_Text text, TaxManager tax, GameObject dialogueUI, Image ownerImage) {
         if(Input.GetKeyDown(KeyCode.E) && !guiObject.activeInHierarchy) {
             UIManager.OpenGUI(guiObject);
+            ownerImage.sprite = ownerSprite;
             diaNumber = 0;
             DoorEnter(dialogueUI.GetComponent<Animator>());
 
