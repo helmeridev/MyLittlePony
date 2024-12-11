@@ -154,6 +154,7 @@ MonoBehaviour:
   - Alright here you go..
   robDialogue: []
   afterDialogue: You already took my money.
+  ownerSprite: {fileID: 21300000, guid: a6e2f10dd79dfb7438a4722302072ada, type: 3}
   diaNumber: 0
   didCollect: 0
   isSpecial: 0

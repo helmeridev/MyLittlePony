@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class TaxManager : MonoBehaviour
@@ -13,6 +14,7 @@ public class TaxManager : MonoBehaviour
 
     [SerializeField] GameObject dialogueUI;
     [SerializeField] TMP_Text dialogueText;
+    [SerializeField] Image ownerImage;
 
     [SerializeField] TMP_Text moneyText;
 
@@ -30,7 +32,7 @@ public class TaxManager : MonoBehaviour
 
         if (taxDoor)
         {
-            taxDoor.GUI(dialogueUI, dialogueText, this, dialogueUI);
+            taxDoor.GUI(dialogueUI, dialogueText, this, dialogueUI, ownerImage);
         }
         if (gambling)
         {
