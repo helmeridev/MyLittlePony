@@ -26,7 +26,13 @@ public class AudioManager : MonoBehaviour
     public void Play(string name) {
         AudioRec audio = Array.Find(audios, audio => audio.name == name);
         if(audio != null) {
-            if(!audio.source.isPlaying) audio.source.Play();
+            if(audio.source.loop) {
+                if(!audio.source.isPlaying) audio.source.Play();
+            }
+            else {
+                audio.source.Stop();
+                audio.source.Play();
+            }
         }
         else {
             Debug.LogWarning("Audio '" + name + "' not found!");

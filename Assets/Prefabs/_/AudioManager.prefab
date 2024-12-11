@@ -66,3 +66,31 @@ MonoBehaviour:
     loop: 0
     playOnAwake: 0
     source: {fileID: 0}
+  - name: DoorOpen
+    clip: {fileID: 8300000, guid: 2c5f792547b374a4fb71cff31b51824b, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: PlayerAttack
+    clip: {fileID: 8300000, guid: b0e2ec82f2fb1fa43a6650f82872bf30, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: BossStep
+    clip: {fileID: 8300000, guid: cf04d322d7627074a9d0e143e447ffd2, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: BossAttack
+    clip: {fileID: 8300000, guid: 08c317634836e8546924e2ca6dfe416c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}

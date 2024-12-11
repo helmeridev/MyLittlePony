@@ -26,6 +26,7 @@ public class PlayerAttack : MonoBehaviour
     void Attack() {
         remainingCooldown = attackCooldown;
         bossManager.currentHealth -= damage;
+        AudioManager.instance.Play("PlayerAttack");
         SpawnDamageText(damage, bossPos);
     }
 
