@@ -33,7 +33,7 @@ public class ObjectAOF : MonoBehaviour
         }
 
         if(isColliding && remainingCooldown <= 0) {
-            tax.AddMoney(-attackDamage);
+            tax.SubMoney(attackDamage);
             bossAttack.SpawnDamageText(-attackDamage, collisionTransform);
             remainingCooldown = attackSpeed;
         }

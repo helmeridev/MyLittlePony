@@ -119,7 +119,7 @@ public class RPS : MonoBehaviour
     {
         float moneyDifference = Mathf.Round(Random.Range(-20, -15) * 10) * 0.1f;
         
-        taxManager.AddMoney(moneyDifference);
+        taxManager.SubMoney(moneyDifference);
 
         UIManager.CloseGUI(eventManager.rpsUI);
         eventManager.rpsLoseUI.SetActive(true);

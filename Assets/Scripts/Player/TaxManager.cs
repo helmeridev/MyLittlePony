@@ -60,6 +60,19 @@ public class TaxManager : MonoBehaviour
     public void AddMoney(float amount)
     {
         money += amount;
+        AudioManager.instance.Play("KaChing");
+        if(money < 0) money = 0;
+        moneyText.text = money.ToString("0.00");
+    }
+    public void AddMoneyNoSFX(float amount)
+    {
+        money += amount;
+        if(money < 0) money = 0;
+        moneyText.text = money.ToString("0.00");
+    }
+    public void SubMoney(float amount)
+    {
+        money -= amount;
         if(money < 0) money = 0;
         moneyText.text = money.ToString("0.00");
     }

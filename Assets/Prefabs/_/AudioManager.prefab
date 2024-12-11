@@ -52,3 +52,17 @@ MonoBehaviour:
     loop: 1
     playOnAwake: 0
     source: {fileID: 0}
+  - name: KaChing
+    clip: {fileID: 8300000, guid: 23cd9d4bd5608b9468ea8a235428b717, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: VineBoom
+    clip: {fileID: 8300000, guid: 4c45d1e20d65fd74f82f52d49dcad0dc, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}

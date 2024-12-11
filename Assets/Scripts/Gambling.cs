@@ -130,7 +130,7 @@ public class Gambling : MonoBehaviour
 
             UIManager.CloseGUI(gambleUI);
 
-            tax.AddMoney(-moneyInput);
+            tax.SubMoney(moneyInput);
             wheelMode = WheelMode.spinning;
             wheelRB.AddTorque(Random.Range(spinSpeed.x, spinSpeed.y), ForceMode2D.Impulse);
             startedSpin = true;
@@ -167,8 +167,15 @@ public class Gambling : MonoBehaviour
             else if(wheelMode == WheelMode.reward) {
                 if(DidHit(wheelAngle, prize.startAngle, prize.endAngle)) {
                     winMultiplier = prize._winMultiplier;
-                    tax.AddMoney(moneyInput * winMultiplier);
-                    if(winMultiplier > 1) cashParticles.Play();
+                    
+                    if(winMultiplier > 1) {
+                        tax.AddMoney(moneyInput * winMultiplier);
+                        cashParticles.Play();
+                    }
+                    else {
+                        tax.AddMoneyNoSFX(moneyInput * winMultiplier);
+                    }
+                    
                     UpdateHistory(winMultiplier);
                     startedSpin = false;
                     wheelMode = WheelMode.idle;

@@ -60,7 +60,7 @@ public class BossAttack : MonoBehaviour
         if(manager.GetPointCollider(manager.armLeft).IsColliding() ||
            manager.GetPointCollider(manager.armRight).IsColliding()) {
             float newDamage = Random.Range(damage1.x, damage1.y);
-            manager.taxManager.AddMoney(-newDamage);
+            manager.taxManager.SubMoney(newDamage);
             attackNumberNoDamage = 0;
             SpawnDamageText(newDamage, manager.player);
         }

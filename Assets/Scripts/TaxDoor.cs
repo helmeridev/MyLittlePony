@@ -54,7 +54,7 @@ public class TaxDoor : MonoBehaviour
             if(diaNumber > robDialogue.Count - 1) {
                 UIManager.CloseGUI(guiObject);
                 diaNumber = 0;
-                if(!didCollect) tax.AddMoney(-cash);
+                if(!didCollect) tax.SubMoney(cash);
                 didCollect = true;
             }
         }
