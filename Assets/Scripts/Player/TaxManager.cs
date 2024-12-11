@@ -49,6 +49,7 @@ public class TaxManager : MonoBehaviour
     {
         if (other.GetComponent<TaxDoor>())
         {
+            UIManager.CloseGUI(dialogueUI);
             taxDoor = null;
         }
         if (other.GetComponent<Gambling>())
