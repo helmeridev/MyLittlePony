@@ -52,6 +52,8 @@ MonoBehaviour:
   housePrefab:
   - {fileID: 177809697748041925, guid: 673e8df8b7531d643ab6bfdef5126af4, type: 3}
   - {fileID: 177809697748041925, guid: b1ed87846f260d240b8357b476b45b1a, type: 3}
+  - {fileID: 177809697748041925, guid: fe8600f53239c0a40a1263ea573fcfcf, type: 3}
+  - {fileID: 177809697748041925, guid: 0a7a21815655aa04cb6c688a449180f5, type: 3}
   specialHousePrefab:
   - {fileID: 177809697748041925, guid: ffd559071eb743149be9c825e577cb9d, type: 3}
   groundChunkStartPos: {fileID: 2631916696803417141}
