@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class AudioManager : MonoBehaviour
             audio.source.pitch = audio.pitch;
             audio.source.loop = audio.loop;
             audio.source.playOnAwake = audio.playOnAwake;
+            audio.source.outputAudioMixerGroup = audio.audioGroup;
         }
     }
 

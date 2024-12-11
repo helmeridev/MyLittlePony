@@ -65,4 +65,5 @@ MonoBehaviour:
   audioText: {fileID: 0}
   dataPathText: {fileID: 0}
   blockDataPath: {fileID: 0}
+  audioMixer: {fileID: 24100000, guid: 6b41f5ae673c0004d890f690d84c13e2, type: 2}
   dialogueUI: {fileID: 0}

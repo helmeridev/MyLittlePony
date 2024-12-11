@@ -21,6 +21,8 @@ public class UIManager : MonoBehaviour
     [Header("Other")]
     [SerializeField] TMP_Text dataPathText;
     [SerializeField] GameObject blockDataPath;
+    [SerializeField] AudioMixer audioMixer;
+    float test;
     public GameObject dialogueUI;
 
     public static bool isPaused = false;
@@ -36,6 +38,7 @@ public class UIManager : MonoBehaviour
         HandlePauseMenu();
         
         if(settingsMenu.activeSelf) {
+            audioMixer.SetFloat("volume", audioSlider.value * 15 - 40);
             audioText.text = audioSlider.value.ToString("0.00");
         }
 
@@ -59,6 +62,7 @@ public class UIManager : MonoBehaviour
         }
     }
     public void UpdateSliders(float audio) {
+        audioMixer.SetFloat("volume", audio * 15 - 40);
         audioSlider.value = audio;
     }
 
