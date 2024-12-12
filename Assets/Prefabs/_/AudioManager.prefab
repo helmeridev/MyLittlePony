@@ -47,7 +47,7 @@ MonoBehaviour:
   audios:
   - name: PlayerWalk
     clip: {fileID: 8300000, guid: 9a3f8b72f26169b49935e523875f7369, type: 3}
-    volume: 0.2
+    volume: 0.1
     pitch: 1
     loop: 1
     playOnAwake: 0
@@ -55,7 +55,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: KaChing
     clip: {fileID: 8300000, guid: 23cd9d4bd5608b9468ea8a235428b717, type: 3}
-    volume: 0.35
+    volume: 0.25
     pitch: 1
     loop: 0
     playOnAwake: 0
@@ -71,7 +71,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: DoorOpen
     clip: {fileID: 8300000, guid: 2c5f792547b374a4fb71cff31b51824b, type: 3}
-    volume: 0.8
+    volume: 0.7
     pitch: 1
     loop: 0
     playOnAwake: 0
