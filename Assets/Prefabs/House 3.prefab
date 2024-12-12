@@ -170,7 +170,7 @@ MonoBehaviour:
   - {x: 0.21526815, y: -0.63829345, z: 0}
   m_ShapePathHash: 1716943593
   m_Mesh: {fileID: 0}
-  m_InstanceId: 58372
+  m_InstanceId: 60708
   m_LocalBounds:
     m_Center: {x: -0.043115884, y: -0.08165538, z: 0}
     m_Extent: {x: 0.3490754, y: 0.5635883, z: 0}
@@ -283,20 +283,36 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7427313806840860166, guid: bd0b2cabc94dd0648bcbf034575d6ade, type: 3}
+      propertyPath: ownerSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 29089221090748f44b21e45f07c3f57f, type: 3}
+    - target: {fileID: 7427313806840860166, guid: bd0b2cabc94dd0648bcbf034575d6ade, type: 3}
       propertyPath: afterDialogue
-      value: Get off my property.
+      value: Nfs bro
+      objectReference: {fileID: 0}
+    - target: {fileID: 7427313806840860166, guid: bd0b2cabc94dd0648bcbf034575d6ade, type: 3}
+      propertyPath: dialogue.Array.size
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7427313806840860166, guid: bd0b2cabc94dd0648bcbf034575d6ade, type: 3}
       propertyPath: dialogue.Array.data[0]
-      value: Does it look like I have money?
+      value: '?'
       objectReference: {fileID: 0}
     - target: {fileID: 7427313806840860166, guid: bd0b2cabc94dd0648bcbf034575d6ade, type: 3}
       propertyPath: dialogue.Array.data[1]
-      value: Well I do, and lots of it.
+      value: For?
       objectReference: {fileID: 0}
     - target: {fileID: 7427313806840860166, guid: bd0b2cabc94dd0648bcbf034575d6ade, type: 3}
       propertyPath: dialogue.Array.data[2]
-      value: Here have some.
+      value: U for?
+      objectReference: {fileID: 0}
+    - target: {fileID: 7427313806840860166, guid: bd0b2cabc94dd0648bcbf034575d6ade, type: 3}
+      propertyPath: dialogue.Array.data[3]
+      value: U seller bro
+      objectReference: {fileID: 0}
+    - target: {fileID: 7427313806840860166, guid: bd0b2cabc94dd0648bcbf034575d6ade, type: 3}
+      propertyPath: dialogue.Array.data[4]
+      value: noob
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

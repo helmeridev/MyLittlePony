@@ -167,7 +167,7 @@ MonoBehaviour:
   - {x: 0.6413212, y: -0.6445591, z: 0}
   m_ShapePathHash: 1499341031
   m_Mesh: {fileID: 0}
-  m_InstanceId: 86208
+  m_InstanceId: 54040
   m_LocalBounds:
     m_Center: {x: 0.021872103, y: -0.014421701, z: 0}
     m_Extent: {x: 0.619449, y: 0.6301374, z: 0}
@@ -266,7 +266,7 @@ PrefabInstance:
     - target: {fileID: 7427313806840860166, guid: bd0b2cabc94dd0648bcbf034575d6ade, type: 3}
       propertyPath: ownerSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 3ed8c642bdd6456439e90ccba9a9606b, type: 3}
+      objectReference: {fileID: 21300000, guid: c4c65215362071144a512c8a9fa4f3ed, type: 3}
     - target: {fileID: 7427313806840860166, guid: bd0b2cabc94dd0648bcbf034575d6ade, type: 3}
       propertyPath: afterDialogue
       value: Go away...
