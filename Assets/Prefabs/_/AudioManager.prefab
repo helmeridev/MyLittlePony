@@ -101,3 +101,11 @@ MonoBehaviour:
     playOnAwake: 0
     audioGroup: {fileID: 24300002, guid: 6b41f5ae673c0004d890f690d84c13e2, type: 2}
     source: {fileID: 0}
+  - name: Jump
+    clip: {fileID: 8300000, guid: 390d007c4dd247e4d8b306e84c1eaf6a, type: 3}
+    volume: 0.011
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    audioGroup: {fileID: 24300002, guid: 6b41f5ae673c0004d890f690d84c13e2, type: 2}
+    source: {fileID: 0}

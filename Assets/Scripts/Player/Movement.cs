@@ -32,7 +32,12 @@ public class Movement : MonoBehaviour
         if(canMove) {
             horizontal = Input.GetAxis("Horizontal");
 
-            if(Input.GetButton("Jump") && IsGrounded()) {
+            if (Input.GetButtonDown("Jump") && IsGrounded())
+            { 
+                AudioManager.instance.Play("Jump"); 
+            }
+
+             if (Input.GetButton("Jump") && IsGrounded()) {
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             }
             if(Input.GetButtonUp("Jump") && rb.velocity.y > 0f) {
