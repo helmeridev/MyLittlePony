@@ -95,8 +95,9 @@ public class BossManager : MonoBehaviour
 
     void BossDeath()
     {
-        if (currentHealth <= 0 && !isdeathanim && transform.position.y < 20) {
+        if (currentHealth <= 0 && !isdeathanim && transform.position.y < 10) {
             animator.Play("BossDeath");
+            finishDoor.SetActive(false);
             MoneySpread();
             isdeathanim = true;
         }
