@@ -165,7 +165,7 @@ MonoBehaviour:
   - {x: 0.49901497, y: -0.5426485, z: 0}
   m_ShapePathHash: 2063678265
   m_Mesh: {fileID: 0}
-  m_InstanceId: 58480
+  m_InstanceId: 113132
   m_LocalBounds:
     m_Center: {x: 0.011705816, y: -0.03954643, z: 0}
     m_Extent: {x: 0.5633054, y: 0.50310206, z: 0}
@@ -277,6 +277,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7427313806840860166, guid: bd0b2cabc94dd0648bcbf034575d6ade, type: 3}
+      propertyPath: ownerSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c48ddd318b63932449e6d71a42c03a38, type: 3}
     - target: {fileID: 7427313806840860166, guid: bd0b2cabc94dd0648bcbf034575d6ade, type: 3}
       propertyPath: afterDialogue
       value: Get off my property.
