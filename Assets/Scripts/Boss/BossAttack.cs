@@ -47,6 +47,7 @@ public class BossAttack : MonoBehaviour
     void Attack2() {
         attackNumberNoDamage = 0;
         remainingAttackTime = attackTime1;
+        
         manager.animator.Play("BossAttack2");
     }
 
@@ -76,6 +77,10 @@ public class BossAttack : MonoBehaviour
         objectAOF.attackSpeed = attackTime2;
         objectAOF.tax = manager.taxManager;
         objectAOF.bossAttack = this;
+    }
+
+    public void PlayAttackSound() {
+        AudioManager.instance.Play("BossAttack");
     }
 
     bool CanAttack() {

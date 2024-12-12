@@ -16,7 +16,7 @@ public class BossMovement : MonoBehaviour
     }
 
     void Update() {
-        if(manager.isActive) {
+        if(manager.isActive && manager.taxManager.money > 0) {
             if(manager.currentHealth > 0) {
                 if(!manager.isAttacking) {
                     Move();
@@ -28,7 +28,6 @@ public class BossMovement : MonoBehaviour
             }
             else {
                 rb.velocity = new Vector2(0, rb.velocity.y);
-                manager.finishDoor.SetActive(false);
             }
         }
     }
@@ -65,5 +64,9 @@ public class BossMovement : MonoBehaviour
 
             isFacingRight = true;
         }
+    }
+
+    public void PlayStepSound() {
+        AudioManager.instance.Play("BossStep");
     }
 }

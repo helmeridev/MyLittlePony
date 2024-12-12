@@ -51,6 +51,7 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     playOnAwake: 0
+    audioGroup: {fileID: 24300002, guid: 6b41f5ae673c0004d890f690d84c13e2, type: 2}
     source: {fileID: 0}
   - name: KaChing
     clip: {fileID: 8300000, guid: 23cd9d4bd5608b9468ea8a235428b717, type: 3}
@@ -58,6 +59,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     playOnAwake: 0
+    audioGroup: {fileID: 24300002, guid: 6b41f5ae673c0004d890f690d84c13e2, type: 2}
     source: {fileID: 0}
   - name: VineBoom
     clip: {fileID: 8300000, guid: 4c45d1e20d65fd74f82f52d49dcad0dc, type: 3}
@@ -65,4 +67,37 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     playOnAwake: 0
+    audioGroup: {fileID: 24300002, guid: 6b41f5ae673c0004d890f690d84c13e2, type: 2}
+    source: {fileID: 0}
+  - name: DoorOpen
+    clip: {fileID: 8300000, guid: 2c5f792547b374a4fb71cff31b51824b, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    audioGroup: {fileID: 24300002, guid: 6b41f5ae673c0004d890f690d84c13e2, type: 2}
+    source: {fileID: 0}
+  - name: PlayerAttack
+    clip: {fileID: 8300000, guid: b0e2ec82f2fb1fa43a6650f82872bf30, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    audioGroup: {fileID: 24300002, guid: 6b41f5ae673c0004d890f690d84c13e2, type: 2}
+    source: {fileID: 0}
+  - name: BossStep
+    clip: {fileID: 8300000, guid: cf04d322d7627074a9d0e143e447ffd2, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    audioGroup: {fileID: 24300002, guid: 6b41f5ae673c0004d890f690d84c13e2, type: 2}
+    source: {fileID: 0}
+  - name: BossAttack
+    clip: {fileID: 8300000, guid: 08c317634836e8546924e2ca6dfe416c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    audioGroup: {fileID: 24300002, guid: 6b41f5ae673c0004d890f690d84c13e2, type: 2}
     source: {fileID: 0}
